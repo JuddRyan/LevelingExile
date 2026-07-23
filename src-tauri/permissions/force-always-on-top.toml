@@ -1,0 +1,19 @@
+[[permission]]
+identifier = "allow-force-always-on-top"
+description = "Allows forcing the overlay window to stay topmost via Win32."
+commands.allow = ["force_always_on_top"]
+
+[[permission]]
+identifier = "allow-set-topmost-paused"
+description = "Allows pausing aggressive topmost refresh while interacting."
+commands.allow = ["set_topmost_paused"]
+
+[[permission]]
+identifier = "allow-exit-app"
+description = "Allows exiting the application (same as tray Exit)."
+commands.allow = ["exit_app"]
+
+[[permission]]
+identifier = "allow-set-game-hotkeys"
+description = "Allows setting overlay global hotkey bindings."
+commands.allow = ["set_game_hotkeys"]

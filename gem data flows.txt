@@ -1,0 +1,71 @@
+Here’s how gem data flows through LevelingExile.
+
+## Two different sources
+
+| What you see | Where it comes from |
+|---|---|
+| **Which gems** are on the list (names) | Your **PoB build** (Pastebin / pobb.in / raw code) |
+| **Act, quest, vendor, level** | Local lookup tables (`gem-catalog.json` + `quest-order.json`) |
+| **Icons** | Local name→file/URL map (`gemIcons.json`) |
+
+The build only decides *which* gems you need. Campaign info and art are looked up separately by gem name.
+
+---
+
+## 1. Gem names (from Path of Building)
+
+**Processed in:** `src/lib/pobParser.js`  
+**Used by:** `src/App.jsx` (import → skill sets → checklist)
+
+Flow:
+
+1. Paste a link or raw code in Settings.
+2. Pastebin/pobb.in fetches use `@tauri-apps/plugin-http`.
+3. Payload is Base64 → zlib-inflated with **`pako`** into PoB XML.
+4. From `<Skills>` / `<SkillSet>` / `<Gem>`, read `name` / `gemName` / `skillId` (including disabled gems).
+5. Duplicates collapse to a count (`2x`, etc.); gems are grouped by PoB skill set.
+
+---
+
+## 2. Act, quest, vendor, level (campaign lookup)
+
+**Data files:**
+- `src/data/gem-catalog.json` — rebuilt by `npm run update:gems` from RePoE `base_items` + `gems.json` (`required_level` from gem level 1, **not** `drop_level`) and campaign rewards from `quest-gem-rewards.json`
+- `src/data/quest-order.json` — campaign quest order + unlock level (fallback when `required_level` is missing)
+- `src/data/quest-gem-rewards.json` — quest/vendor reward tables + NPC map
+
+**Processed in:** `src/data/gemLookup.js` → `enrichGem(name, className)`
+
+For each PoB gem name it:
+
+1. Finds the gem in `gem-catalog.json` (case-insensitive; with/without `" Support"`).
+2. Picks the **earliest** campaign source for your class (quest reward preferred over vendor).
+3. Fills in:
+   - **level** — true `required_level`, else quest-order level, else act fallback
+   - **act / quest / vendor / questOrder** — from that campaign source
+4. If unknown → Act 6 / Fallen from Grace / Lilly Roth.
+
+Saved builds are re-enriched on load so catalog updates apply without re-import.
+
+---
+
+## 3. Icons
+
+**Data file:** `src/data/gemIcons.json`  
+**Rendered by:** `src/components/GemIcon.jsx`  
+**Maintained by:** `npm run update:gems` (fills missing mappings from RePoE art paths → poedb.tw / local assets)
+
+---
+
+## Pipeline (short)
+
+```
+PoB link/code
+  → pobParser.js          → gem names + skill sets
+  → gemLookup.js          → act / quest / vendor / level
+                            (gem-catalog.json + quest-order.json)
+  → GemIcon.jsx           → icon                          (gemIcons.json)
+  → App.jsx               → UI list / NEXT UP / hotkeys
+```
+
+**Refresh catalog + icons:** `npm run update:gems`

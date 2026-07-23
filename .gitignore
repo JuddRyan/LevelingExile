@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies & build output
+node_modules
+dist
+dist-ssr
+*.local
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor / OS junk
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tauri / Rust (also ignored under src-tauri/.gitignore)
+src-tauri/target
+src-tauri/gen/schemas
+
+# Gem icon binaries (download via npm run update:gems; keep mapping + notice)
+src/assets/gems/**
+!src/assets/gems/.gitkeep
+!src/assets/gems/NOTICE.txt
+
+# Script / debug leftovers
+scripts/_*.json
+scripts/_*.txt
+scripts/_*.mjs
+*.tsbuildinfo

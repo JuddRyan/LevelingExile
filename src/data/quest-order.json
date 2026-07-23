@@ -1,0 +1,19 @@
+{
+  "_comment": "Campaign quest order + approximate unlock level for display/sort. Array order = campaign progress.",
+  "quests": [
+    { "quest": "The Twilight Strand", "act": 1, "level": 1 },
+    { "quest": "Enemy at the Gate", "act": 1, "level": 1 },
+    { "quest": "Mercy Mission", "act": 1, "level": 4 },
+    { "quest": "Breaking Some Eggs", "act": 1, "level": 4 },
+    { "quest": "The Caged Brute", "act": 1, "level": 8 },
+    { "quest": "The Siren's Cadence", "act": 1, "level": 12 },
+    { "quest": "Intruders in Black", "act": 2, "level": 16 },
+    { "quest": "Sharp and Cruel", "act": 2, "level": 24 },
+    { "quest": "Lost in Love", "act": 3, "level": 28 },
+    { "quest": "Sever the Right Hand", "act": 3, "level": 31 },
+    { "quest": "A Fixture of Fate", "act": 3, "level": 31 },
+    { "quest": "Breaking the Seal", "act": 4, "level": 38 },
+    { "quest": "The Eternal Nightmare", "act": 4, "level": 38 },
+    { "quest": "Fallen from Grace", "act": 6, "level": 45 }
+  ]
+}
