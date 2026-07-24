@@ -1,15 +1,15 @@
 {
- "_comment": "Rebuilt from RePoE base_items + gems.json required_level (not drop_level) + quest-gem-rewards. Run: npm run update:gems",
+ "_comment": "Rebuilt from RePoE base_items + gems.json required_level/color (not drop_level) + quest-gem-rewards. Run: npm run update:gems",
  "_source": {
   "base_items": "https://repoe-fork.github.io/base_items.min.json",
   "gems": "https://repoe-fork.github.io/gems.min.json"
  },
- "_generated_at": "2026-07-23T21:56:17.954Z",
+ "_generated_at": "2026-07-24T13:13:44.910Z",
  "gems": [
   {
    "name": "Absolution",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -40,7 +40,7 @@
   {
    "name": "Added Chaos Damage Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -55,7 +55,7 @@
   {
    "name": "Added Cold Damage Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -90,7 +90,7 @@
   {
    "name": "Added Fire Damage Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -127,7 +127,7 @@
   {
    "name": "Added Lightning Damage Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -164,7 +164,7 @@
   {
    "name": "Additional Accuracy Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -179,7 +179,7 @@
   {
    "name": "Advanced Traps Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -194,7 +194,7 @@
   {
    "name": "Alchemist's Mark",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -225,7 +225,7 @@
   {
    "name": "Ambush",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -256,7 +256,7 @@
   {
    "name": "Ancestral Call Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -293,7 +293,7 @@
   {
    "name": "Ancestral Cry",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -326,7 +326,7 @@
   {
    "name": "Ancestral Protector",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -361,7 +361,7 @@
   {
    "name": "Ancestral Warchief",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -392,7 +392,7 @@
   {
    "name": "Anger",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -425,7 +425,7 @@
   {
    "name": "Animate Guardian",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -440,7 +440,7 @@
   {
    "name": "Animate Weapon",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -455,7 +455,7 @@
   {
    "name": "Annihilation Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -470,7 +470,7 @@
   {
    "name": "Arc",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -501,7 +501,7 @@
   {
    "name": "Arcane Cloak",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -536,7 +536,7 @@
   {
    "name": "Arcane Surge Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -584,7 +584,7 @@
   {
    "name": "Arcanist Brand",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -615,7 +615,7 @@
   {
    "name": "Archmage Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -650,7 +650,7 @@
   {
    "name": "Arctic Armour",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -687,7 +687,7 @@
   {
    "name": "Armageddon Brand",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -718,7 +718,7 @@
   {
    "name": "Arrogance Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -755,7 +755,7 @@
   {
    "name": "Arrow Nova Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -786,7 +786,7 @@
   {
    "name": "Artillery Ballista",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -817,7 +817,7 @@
   {
    "name": "Assassin's Mark",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -848,7 +848,7 @@
   {
    "name": "Autoexertion",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -863,7 +863,7 @@
   {
    "name": "Automation",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -878,7 +878,7 @@
   {
    "name": "Awakened Added Chaos Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -893,7 +893,7 @@
   {
    "name": "Awakened Added Cold Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -908,7 +908,7 @@
   {
    "name": "Awakened Added Fire Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -923,7 +923,7 @@
   {
    "name": "Awakened Added Lightning Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -938,7 +938,7 @@
   {
    "name": "Awakened Ancestral Call Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -953,7 +953,7 @@
   {
    "name": "Awakened Arrow Nova Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -968,7 +968,7 @@
   {
    "name": "Awakened Blasphemy Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -983,7 +983,7 @@
   {
    "name": "Awakened Brutality Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -998,7 +998,7 @@
   {
    "name": "Awakened Burning Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1013,7 +1013,7 @@
   {
    "name": "Awakened Cast On Critical Strike Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1028,7 +1028,7 @@
   {
    "name": "Awakened Cast While Channelling Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1043,7 +1043,7 @@
   {
    "name": "Awakened Chain Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1058,7 +1058,7 @@
   {
    "name": "Awakened Cold Penetration Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1073,7 +1073,7 @@
   {
    "name": "Awakened Controlled Destruction Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1088,7 +1088,7 @@
   {
    "name": "Awakened Deadly Ailments Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1103,7 +1103,7 @@
   {
    "name": "Awakened Elemental Damage with Attacks Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1118,7 +1118,7 @@
   {
    "name": "Awakened Elemental Focus Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1133,7 +1133,7 @@
   {
    "name": "Awakened Empower Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1148,7 +1148,7 @@
   {
    "name": "Awakened Enhance Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1163,7 +1163,7 @@
   {
    "name": "Awakened Enlighten Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1178,7 +1178,7 @@
   {
    "name": "Awakened Fire Penetration Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1193,7 +1193,7 @@
   {
    "name": "Awakened Fork Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1208,7 +1208,7 @@
   {
    "name": "Awakened Generosity Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1223,7 +1223,7 @@
   {
    "name": "Awakened Greater Multiple Projectiles Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1238,7 +1238,7 @@
   {
    "name": "Awakened Hextouch Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1253,7 +1253,7 @@
   {
    "name": "Awakened Increased Area of Effect Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1268,7 +1268,7 @@
   {
    "name": "Awakened Lightning Penetration Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1283,7 +1283,7 @@
   {
    "name": "Awakened Melee Physical Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1298,7 +1298,7 @@
   {
    "name": "Awakened Melee Splash Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1313,7 +1313,7 @@
   {
    "name": "Awakened Minion Damage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1328,7 +1328,7 @@
   {
    "name": "Awakened Multistrike Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1343,7 +1343,7 @@
   {
    "name": "Awakened Spell Cascade Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1358,7 +1358,7 @@
   {
    "name": "Awakened Spell Echo Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1373,7 +1373,7 @@
   {
    "name": "Awakened Swift Affliction Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1388,7 +1388,7 @@
   {
    "name": "Awakened Unbound Ailments Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1403,7 +1403,7 @@
   {
    "name": "Awakened Unleash Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1418,7 +1418,7 @@
   {
    "name": "Awakened Vicious Projectiles Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1433,7 +1433,7 @@
   {
    "name": "Awakened Void Manipulation Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1448,7 +1448,7 @@
   {
    "name": "Ball Lightning",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -1481,7 +1481,7 @@
   {
    "name": "Ballista Totem Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1496,7 +1496,7 @@
   {
    "name": "Bane",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -1531,7 +1531,7 @@
   {
    "name": "Barrage",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1546,7 +1546,7 @@
   {
    "name": "Barrage Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -1583,7 +1583,7 @@
   {
    "name": "Battlemage's Cry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -1614,7 +1614,7 @@
   {
    "name": "Bear Trap",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -1649,7 +1649,7 @@
   {
    "name": "Behead Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -1682,7 +1682,7 @@
   {
    "name": "Berserk",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -1713,7 +1713,7 @@
   {
    "name": "Blade Blast",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -1744,7 +1744,7 @@
   {
    "name": "Blade Flurry",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -1779,7 +1779,7 @@
   {
    "name": "Blade Vortex",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -1812,7 +1812,7 @@
   {
    "name": "Bladefall",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -1845,7 +1845,7 @@
   {
    "name": "Bladestorm",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -1876,7 +1876,7 @@
   {
    "name": "Blasphemy Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -1909,7 +1909,7 @@
   {
    "name": "Blast Rain",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -1942,7 +1942,7 @@
   {
    "name": "Blastchain Mine Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -1957,7 +1957,7 @@
   {
    "name": "Blazing Salvo",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -1990,7 +1990,7 @@
   {
    "name": "Blessed Call Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2005,7 +2005,7 @@
   {
    "name": "Blight",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -2038,7 +2038,7 @@
   {
    "name": "Blind Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2068,7 +2068,7 @@
   {
    "name": "Blink Arrow",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -2103,7 +2103,7 @@
   {
    "name": "Block Chance Reduction Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2118,7 +2118,7 @@
   {
    "name": "Blood and Sand",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -2149,7 +2149,7 @@
   {
    "name": "Blood Offering",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2164,7 +2164,7 @@
   {
    "name": "Blood Rage",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -2199,7 +2199,7 @@
   {
    "name": "Bloodlust Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2214,7 +2214,7 @@
   {
    "name": "Bloodsoaked Banner Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2229,7 +2229,7 @@
   {
    "name": "Bloodthirst Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -2264,7 +2264,7 @@
   {
    "name": "Bodyswap",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -2295,7 +2295,7 @@
   {
    "name": "Bone Offering",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2310,7 +2310,7 @@
   {
    "name": "Bonechill Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -2343,7 +2343,7 @@
   {
    "name": "Boneshatter",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2358,7 +2358,7 @@
   {
    "name": "Bonespire Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2373,7 +2373,7 @@
   {
    "name": "Brand Recall",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -2404,7 +2404,7 @@
   {
    "name": "Brutality Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -2435,7 +2435,7 @@
   {
    "name": "Burning Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -2466,7 +2466,7 @@
   {
    "name": "Burning Damage Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -2499,7 +2499,7 @@
   {
    "name": "Call the Pyre",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2514,7 +2514,7 @@
   {
    "name": "Cast On Critical Strike Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2529,7 +2529,7 @@
   {
    "name": "Cast on Death Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2544,7 +2544,7 @@
   {
    "name": "Cast on Melee Kill Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2559,7 +2559,7 @@
   {
    "name": "Cast on Ward Break Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2574,7 +2574,7 @@
   {
    "name": "Cast when Damage Taken Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2589,7 +2589,7 @@
   {
    "name": "Cast when Stunned Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2604,7 +2604,7 @@
   {
    "name": "Cast while Channelling Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2619,7 +2619,7 @@
   {
    "name": "Caustic Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -2650,7 +2650,7 @@
   {
    "name": "Chain Hook",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -2681,7 +2681,7 @@
   {
    "name": "Chain Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -2724,7 +2724,7 @@
   {
    "name": "Chance to Bleed Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -2774,7 +2774,7 @@
   {
    "name": "Chance to Flee Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -2789,7 +2789,7 @@
   {
    "name": "Chance to Poison Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -2841,7 +2841,7 @@
   {
    "name": "Charged Dash",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -2878,7 +2878,7 @@
   {
    "name": "Charged Mines Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -2909,7 +2909,7 @@
   {
    "name": "Charged Traps Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -2940,7 +2940,7 @@
   {
    "name": "Clarity",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -2975,7 +2975,7 @@
   {
    "name": "Cleave",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -3006,7 +3006,7 @@
   {
    "name": "Close Combat Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -3041,7 +3041,7 @@
   {
    "name": "Cluster Traps Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -3072,7 +3072,7 @@
   {
    "name": "Cobra Lash",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -3103,7 +3103,7 @@
   {
    "name": "Cold Penetration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -3140,7 +3140,7 @@
   {
    "name": "Cold Snap",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -3173,7 +3173,7 @@
   {
    "name": "Cold to Fire Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3188,7 +3188,7 @@
   {
    "name": "Combustion Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -3221,7 +3221,7 @@
   {
    "name": "Companionship Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3236,7 +3236,7 @@
   {
    "name": "Concentrated Effect Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -3271,7 +3271,7 @@
   {
    "name": "Conductivity",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -3308,7 +3308,7 @@
   {
    "name": "Conflagration",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3323,7 +3323,7 @@
   {
    "name": "Congregation Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3338,7 +3338,7 @@
   {
    "name": "Consecrated Path",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -3369,7 +3369,7 @@
   {
    "name": "Contagion",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -3402,7 +3402,7 @@
   {
    "name": "Controlled Blaze Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -3433,7 +3433,7 @@
   {
    "name": "Controlled Destruction Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -3466,7 +3466,7 @@
   {
    "name": "Conversion Trap",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3512,7 +3512,7 @@
   {
    "name": "Cooldown Recovery Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3527,7 +3527,7 @@
   {
    "name": "Corrupting Cry Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -3560,7 +3560,7 @@
   {
    "name": "Corrupting Fever",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -3595,7 +3595,7 @@
   {
    "name": "Crackling Lance",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -3626,7 +3626,7 @@
   {
    "name": "Creeping Frost",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -3657,7 +3657,7 @@
   {
    "name": "Cremation",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -3690,7 +3690,7 @@
   {
    "name": "Critical Strike Affliction Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -3723,7 +3723,7 @@
   {
    "name": "Cruelty Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -3762,7 +3762,7 @@
   {
    "name": "Crushing Fist",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3777,7 +3777,7 @@
   {
    "name": "Cull the Weak Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3792,7 +3792,7 @@
   {
    "name": "Culling Strike Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3807,7 +3807,7 @@
   {
    "name": "Cursed Ground Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3822,7 +3822,7 @@
   {
    "name": "Cyclone",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -3857,7 +3857,7 @@
   {
    "name": "Damage on Full Life Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3872,7 +3872,7 @@
   {
    "name": "Dance in the White",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3887,7 +3887,7 @@
   {
    "name": "Dark Pact",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -3902,7 +3902,7 @@
   {
    "name": "Dash",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -3939,7 +3939,7 @@
   {
    "name": "Deadly Ailments Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -3987,7 +3987,7 @@
   {
    "name": "Decay Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -4020,7 +4020,7 @@
   {
    "name": "Decoy Totem",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -4055,7 +4055,7 @@
   {
    "name": "Defiance Banner",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -4086,7 +4086,7 @@
   {
    "name": "Desecrate",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -4117,7 +4117,7 @@
   {
    "name": "Despair",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -4152,7 +4152,7 @@
   {
    "name": "Destructive Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4167,7 +4167,7 @@
   {
    "name": "Determination",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -4198,7 +4198,7 @@
   {
    "name": "Detonate Dead",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -4246,7 +4246,7 @@
   {
    "name": "Devour Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -4277,7 +4277,7 @@
   {
    "name": "Devouring Totem",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4292,7 +4292,7 @@
   {
    "name": "Discharge",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4307,7 +4307,7 @@
   {
    "name": "Discipline",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -4338,7 +4338,7 @@
   {
    "name": "Divine Blast",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4353,7 +4353,7 @@
   {
    "name": "Divine Blessing Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -4384,7 +4384,7 @@
   {
    "name": "Divine Ire",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -4417,7 +4417,7 @@
   {
    "name": "Divine Retribution",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4432,7 +4432,7 @@
   {
    "name": "Divine Sentinel Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4447,7 +4447,7 @@
   {
    "name": "Dominating Blow",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -4478,7 +4478,7 @@
   {
    "name": "Double Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -4509,7 +4509,7 @@
   {
    "name": "Dread Banner",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -4540,7 +4540,7 @@
   {
    "name": "Dual Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4555,7 +4555,7 @@
   {
    "name": "Earthbreaker Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4570,7 +4570,7 @@
   {
    "name": "Earthquake",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -4601,7 +4601,7 @@
   {
    "name": "Earthshatter",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -4649,7 +4649,7 @@
   {
    "name": "Edify Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4664,7 +4664,7 @@
   {
    "name": "Efficacy Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -4695,7 +4695,7 @@
   {
    "name": "Eldritch Blasphemy Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4710,7 +4710,7 @@
   {
    "name": "Elemental Army Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4725,7 +4725,7 @@
   {
    "name": "Elemental Damage with Attacks Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -4764,7 +4764,7 @@
   {
    "name": "Elemental Focus Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -4799,7 +4799,7 @@
   {
    "name": "Elemental Hit",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -4830,7 +4830,7 @@
   {
    "name": "Elemental Penetration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4845,7 +4845,7 @@
   {
    "name": "Elemental Proliferation Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -4895,7 +4895,7 @@
   {
    "name": "Elemental Weakness",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -4932,7 +4932,7 @@
   {
    "name": "Empower Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4947,7 +4947,7 @@
   {
    "name": "Endurance Charge on Melee Stun Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -4962,7 +4962,7 @@
   {
    "name": "Enduring Cry",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -4995,7 +4995,7 @@
   {
    "name": "Energy Blade",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5010,7 +5010,7 @@
   {
    "name": "Energy Leech Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -5047,7 +5047,7 @@
   {
    "name": "Enervating Grasp",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5062,7 +5062,7 @@
   {
    "name": "Enfeeble",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -5097,7 +5097,7 @@
   {
    "name": "Enhance Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5112,7 +5112,7 @@
   {
    "name": "Enlighten Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5127,7 +5127,7 @@
   {
    "name": "Ensnaring Arrow",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -5158,7 +5158,7 @@
   {
    "name": "Envy",
    "required_level": "60",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5173,7 +5173,7 @@
   {
    "name": "Essence Drain",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -5206,7 +5206,7 @@
   {
    "name": "Eternal Blessing Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -5237,7 +5237,7 @@
   {
    "name": "Ethereal Knives",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -5268,7 +5268,7 @@
   {
    "name": "Eviscerate",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5283,7 +5283,7 @@
   {
    "name": "Excommunicate Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5298,7 +5298,7 @@
   {
    "name": "Exemplar Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5313,7 +5313,7 @@
   {
    "name": "Expert Retaliation Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5328,7 +5328,7 @@
   {
    "name": "Explosive Arrow",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5343,7 +5343,7 @@
   {
    "name": "Explosive Concoction",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -5374,7 +5374,7 @@
   {
    "name": "Explosive Trap",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -5405,7 +5405,7 @@
   {
    "name": "Exsanguinate",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -5436,7 +5436,7 @@
   {
    "name": "Eye of Winter",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -5467,7 +5467,7 @@
   {
    "name": "Falling Crystals",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5482,7 +5482,7 @@
   {
    "name": "Faster Attacks Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -5521,7 +5521,7 @@
   {
    "name": "Faster Casting Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -5558,7 +5558,7 @@
   {
    "name": "Faster Projectiles Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -5589,7 +5589,7 @@
   {
    "name": "Feeding Frenzy Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -5620,7 +5620,7 @@
   {
    "name": "Fire Penetration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -5655,7 +5655,7 @@
   {
    "name": "Fire Trap",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -5686,7 +5686,7 @@
   {
    "name": "Fireball",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -5717,7 +5717,7 @@
   {
    "name": "Firestorm",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -5750,7 +5750,7 @@
   {
    "name": "Fissure Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5765,7 +5765,7 @@
   {
    "name": "Fist of War Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -5800,7 +5800,7 @@
   {
    "name": "Flame Dash",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -5837,7 +5837,7 @@
   {
    "name": "Flame Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -5868,7 +5868,7 @@
   {
    "name": "Flame Surge",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -5883,7 +5883,7 @@
   {
    "name": "Flame Wall",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -5916,7 +5916,7 @@
   {
    "name": "Flameblast",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -5951,7 +5951,7 @@
   {
    "name": "Flamethrower Trap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -5982,7 +5982,7 @@
   {
    "name": "Flamewood Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -6013,7 +6013,7 @@
   {
    "name": "Flammability",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -6050,7 +6050,7 @@
   {
    "name": "Flammable Shot",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6065,7 +6065,7 @@
   {
    "name": "Flesh and Stone",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -6096,7 +6096,7 @@
   {
    "name": "Flesh Offering",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -6127,7 +6127,7 @@
   {
    "name": "Flicker Strike",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6142,7 +6142,7 @@
   {
    "name": "Focused Ballista Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -6173,7 +6173,7 @@
   {
    "name": "Focused Channelling Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6188,7 +6188,7 @@
   {
    "name": "Forbidden Rite",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6203,7 +6203,7 @@
   {
    "name": "Fork Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -6234,7 +6234,7 @@
   {
    "name": "Fortify Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -6273,7 +6273,7 @@
   {
    "name": "Foulgrasp Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6288,7 +6288,7 @@
   {
    "name": "Freezing Pulse",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -6321,7 +6321,7 @@
   {
    "name": "Frenzy",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -6356,7 +6356,7 @@
   {
    "name": "Fresh Meat Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -6387,7 +6387,7 @@
   {
    "name": "Frigid Bond Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -6420,7 +6420,7 @@
   {
    "name": "Frost Blades",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -6451,7 +6451,7 @@
   {
    "name": "Frost Bomb",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -6486,7 +6486,7 @@
   {
    "name": "Frost Shield",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -6523,7 +6523,7 @@
   {
    "name": "Frost Wall",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6538,7 +6538,7 @@
   {
    "name": "Frostbite",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -6575,7 +6575,7 @@
   {
    "name": "Frostblink",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -6612,7 +6612,7 @@
   {
    "name": "Frostbolt",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -6643,7 +6643,7 @@
   {
    "name": "Frostmage Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6658,7 +6658,7 @@
   {
    "name": "Frozen Legion",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -6689,7 +6689,7 @@
   {
    "name": "Galvanic Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -6722,7 +6722,7 @@
   {
    "name": "Galvanic Field",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -6753,7 +6753,7 @@
   {
    "name": "General's Cry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -6784,7 +6784,7 @@
   {
    "name": "Generosity Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6799,7 +6799,7 @@
   {
    "name": "Glacial Cascade",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -6830,7 +6830,7 @@
   {
    "name": "Glacial Hammer",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -6861,7 +6861,7 @@
   {
    "name": "Glacial Shield Swipe",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6876,7 +6876,7 @@
   {
    "name": "Glowing Silhouette",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6906,7 +6906,7 @@
   {
    "name": "Gluttony Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6921,7 +6921,7 @@
   {
    "name": "Grace",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -6954,7 +6954,7 @@
   {
    "name": "Greater Ancestral Call Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6969,7 +6969,7 @@
   {
    "name": "Greater Chain Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6984,7 +6984,7 @@
   {
    "name": "Greater Devour Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -6999,7 +6999,7 @@
   {
    "name": "Greater Fork Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7014,7 +7014,7 @@
   {
    "name": "Greater Kinetic Instability Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7029,7 +7029,7 @@
   {
    "name": "Greater Multiple Projectiles Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -7072,7 +7072,7 @@
   {
    "name": "Greater Multistrike Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7087,7 +7087,7 @@
   {
    "name": "Greater Spell Cascade Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7102,7 +7102,7 @@
   {
    "name": "Greater Spell Echo Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7117,7 +7117,7 @@
   {
    "name": "Greater Unleash Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7132,7 +7132,7 @@
   {
    "name": "Greater Volley Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -7169,7 +7169,7 @@
   {
    "name": "Ground Slam",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -7200,7 +7200,7 @@
   {
    "name": "Guardian's Blessing Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -7231,7 +7231,7 @@
   {
    "name": "Hallow Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7246,7 +7246,7 @@
   {
    "name": "Harrowing Throng Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7261,7 +7261,7 @@
   {
    "name": "Haste",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7276,7 +7276,7 @@
   {
    "name": "Hatred",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -7313,7 +7313,7 @@
   {
    "name": "Heart of Flame",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7328,7 +7328,7 @@
   {
    "name": "Heavy Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -7359,7 +7359,7 @@
   {
    "name": "Herald of Agony",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -7392,7 +7392,7 @@
   {
    "name": "Herald of Ash",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -7435,7 +7435,7 @@
   {
    "name": "Herald of Ice",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -7478,7 +7478,7 @@
   {
    "name": "Herald of Purity",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -7509,7 +7509,7 @@
   {
    "name": "Herald of Thunder",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -7552,7 +7552,7 @@
   {
    "name": "Hex Bloom Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -7583,7 +7583,7 @@
   {
    "name": "Hexblast",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -7618,7 +7618,7 @@
   {
    "name": "Hexpass Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7633,7 +7633,7 @@
   {
    "name": "Hextoad Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7648,7 +7648,7 @@
   {
    "name": "Hextouch Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7663,7 +7663,7 @@
   {
    "name": "High-Impact Mine Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -7694,7 +7694,7 @@
   {
    "name": "His Burning Message",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7709,7 +7709,7 @@
   {
    "name": "Hiveborn Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7724,7 +7724,7 @@
   {
    "name": "Holy Flame Totem",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -7755,7 +7755,7 @@
   {
    "name": "Holy Hammers",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7770,7 +7770,7 @@
   {
    "name": "Holy Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7785,7 +7785,7 @@
   {
    "name": "Holy Sweep",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -7800,7 +7800,7 @@
   {
    "name": "Hydrosphere",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -7833,7 +7833,7 @@
   {
    "name": "Hypothermia Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -7866,7 +7866,7 @@
   {
    "name": "Ice Bite Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -7901,7 +7901,7 @@
   {
    "name": "Ice Crash",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -7936,7 +7936,7 @@
   {
    "name": "Ice Nova",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -7971,7 +7971,7 @@
   {
    "name": "Ice Shot",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -8002,7 +8002,7 @@
   {
    "name": "Ice Spear",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8017,7 +8017,7 @@
   {
    "name": "Ice Trap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8032,7 +8032,7 @@
   {
    "name": "Icicle Mine",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -8063,7 +8063,7 @@
   {
    "name": "Ignite Proliferation Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -8094,7 +8094,7 @@
   {
    "name": "Immolate Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -8127,7 +8127,7 @@
   {
    "name": "Immortal Call",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8142,7 +8142,7 @@
   {
    "name": "Impale Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8177,7 +8177,7 @@
   {
    "name": "Impending Doom Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8212,7 +8212,7 @@
   {
    "name": "Incinerate",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8227,7 +8227,7 @@
   {
    "name": "Increased Area of Effect Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -8270,7 +8270,7 @@
   {
    "name": "Increased Critical Damage Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8285,7 +8285,7 @@
   {
    "name": "Increased Critical Strikes Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8300,7 +8300,7 @@
   {
    "name": "Increased Duration Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8331,7 +8331,7 @@
   {
    "name": "Infernal Blow",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -8362,7 +8362,7 @@
   {
    "name": "Infernal Cry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -8393,7 +8393,7 @@
   {
    "name": "Infernal Legion Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -8424,7 +8424,7 @@
   {
    "name": "Infused Channelling Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -8459,7 +8459,7 @@
   {
    "name": "Innervate Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8492,7 +8492,7 @@
   {
    "name": "Inspiration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8507,7 +8507,7 @@
   {
    "name": "Intensify Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8542,7 +8542,7 @@
   {
    "name": "Intimidating Cry",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -8575,7 +8575,7 @@
   {
    "name": "Intuitive Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -8606,7 +8606,7 @@
   {
    "name": "Invention Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8621,7 +8621,7 @@
   {
    "name": "Invert the Rules Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8636,7 +8636,7 @@
   {
    "name": "Iron Grip Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8651,7 +8651,7 @@
   {
    "name": "Iron Will Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8666,7 +8666,7 @@
   {
    "name": "Item Rarity Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8681,7 +8681,7 @@
   {
    "name": "Kinetic Blast",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -8712,7 +8712,7 @@
   {
    "name": "Kinetic Bolt",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -8743,7 +8743,7 @@
   {
    "name": "Kinetic Fusillade",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8758,7 +8758,7 @@
   {
    "name": "Kinetic Instability Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8773,7 +8773,7 @@
   {
    "name": "Kinetic Rain",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8788,7 +8788,7 @@
   {
    "name": "Knockback Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8803,7 +8803,7 @@
   {
    "name": "Lacerate",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -8834,7 +8834,7 @@
   {
    "name": "Lancing Steel",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -8865,7 +8865,7 @@
   {
    "name": "Leap Slam",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -8902,7 +8902,7 @@
   {
    "name": "Less Duration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8917,7 +8917,7 @@
   {
    "name": "Lethal Dose Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8932,7 +8932,7 @@
   {
    "name": "Life Gain on Hit Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -8947,7 +8947,7 @@
   {
    "name": "Life Leech Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -8984,7 +8984,7 @@
   {
    "name": "Lifetap Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9021,7 +9021,7 @@
   {
    "name": "Lightning Arrow",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -9052,7 +9052,7 @@
   {
    "name": "Lightning Conduit",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -9083,7 +9083,7 @@
   {
    "name": "Lightning Penetration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -9120,7 +9120,7 @@
   {
    "name": "Lightning Spire Trap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -9151,7 +9151,7 @@
   {
    "name": "Lightning Strike",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -9182,7 +9182,7 @@
   {
    "name": "Lightning Tendrils",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -9217,7 +9217,7 @@
   {
    "name": "Lightning Trap",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -9248,7 +9248,7 @@
   {
    "name": "Lightning Warp",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9279,7 +9279,7 @@
   {
    "name": "Living Lightning Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9294,7 +9294,7 @@
   {
    "name": "Locus Mine Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9309,7 +9309,7 @@
   {
    "name": "Machinations Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9324,7 +9324,7 @@
   {
    "name": "Magnetism Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9339,7 +9339,7 @@
   {
    "name": "Maim Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9370,7 +9370,7 @@
   {
    "name": "Malevolence",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -9405,7 +9405,7 @@
   {
    "name": "Mana Leech Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9420,7 +9420,7 @@
   {
    "name": "Manabond",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -9453,7 +9453,7 @@
   {
    "name": "Manaforged Arrows Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9484,7 +9484,7 @@
   {
    "name": "Mark On Hit Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9499,7 +9499,7 @@
   {
    "name": "Meat Shield Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -9530,7 +9530,7 @@
   {
    "name": "Melee Physical Damage Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -9569,7 +9569,7 @@
   {
    "name": "Melee Splash Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9608,7 +9608,7 @@
   {
    "name": "Minefield Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -9639,7 +9639,7 @@
   {
    "name": "Minion Damage Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9670,7 +9670,7 @@
   {
    "name": "Minion Life Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9685,7 +9685,7 @@
   {
    "name": "Minion Pact Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9700,7 +9700,7 @@
   {
    "name": "Minion Speed Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -9731,7 +9731,7 @@
   {
    "name": "Mirage Archer Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -9764,7 +9764,7 @@
   {
    "name": "Mirror Arrow",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9779,7 +9779,7 @@
   {
    "name": "Molten Shell",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -9810,7 +9810,7 @@
   {
    "name": "Molten Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -9847,7 +9847,7 @@
   {
    "name": "Momentum Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -9897,7 +9897,7 @@
   {
    "name": "More Duration Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9912,7 +9912,7 @@
   {
    "name": "Multiple Projectiles Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -9927,7 +9927,7 @@
   {
    "name": "Multiple Totems Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -9960,7 +9960,7 @@
   {
    "name": "Multiple Traps Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -9991,7 +9991,7 @@
   {
    "name": "Multistrike Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -10034,7 +10034,7 @@
   {
    "name": "Nightblade Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -10065,7 +10065,7 @@
   {
    "name": "Orb of Storms",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -10113,7 +10113,7 @@
   {
    "name": "Overcharge Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -10144,7 +10144,7 @@
   {
    "name": "Overcharged Sinews",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10159,7 +10159,7 @@
   {
    "name": "Overexertion Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10174,7 +10174,7 @@
   {
    "name": "Overheat Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10189,7 +10189,7 @@
   {
    "name": "Overloaded Intensity Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10204,7 +10204,7 @@
   {
    "name": "Pacifism Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10219,7 +10219,7 @@
   {
    "name": "Penance Brand",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -10250,7 +10250,7 @@
   {
    "name": "Perforate",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -10281,7 +10281,7 @@
   {
    "name": "Pestilent Strike",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -10312,7 +10312,7 @@
   {
    "name": "Petrified Blood",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -10347,7 +10347,7 @@
   {
    "name": "Phase Run",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10362,7 +10362,7 @@
   {
    "name": "Physical to Lightning Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10377,7 +10377,7 @@
   {
    "name": "Pierce Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -10414,7 +10414,7 @@
   {
    "name": "Pinpoint Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -10447,7 +10447,7 @@
   {
    "name": "Plague Bearer",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -10523,7 +10523,7 @@
   {
    "name": "Poacher's Mark",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -10556,7 +10556,7 @@
   {
    "name": "Point Blank Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10571,7 +10571,7 @@
   {
    "name": "Poisonous Concoction",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -10617,7 +10617,7 @@
   {
    "name": "Power Charge On Critical Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10632,7 +10632,7 @@
   {
    "name": "Power Siphon",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10647,7 +10647,7 @@
   {
    "name": "Precision",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -10682,7 +10682,7 @@
   {
    "name": "Predator Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -10713,7 +10713,7 @@
   {
    "name": "Preserving Stillness",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10728,7 +10728,7 @@
   {
    "name": "Pride",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -10761,7 +10761,7 @@
   {
    "name": "Prismatic Burst Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -10792,7 +10792,7 @@
   {
    "name": "Protective Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10807,7 +10807,7 @@
   {
    "name": "Pulverise Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -10842,7 +10842,7 @@
   {
    "name": "Puncture",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -10875,7 +10875,7 @@
   {
    "name": "Punishment",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -10910,7 +10910,7 @@
   {
    "name": "Purifying Flame",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -10941,7 +10941,7 @@
   {
    "name": "Purity of Elements",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -10972,7 +10972,7 @@
   {
    "name": "Purity of Fire",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -10987,7 +10987,7 @@
   {
    "name": "Purity of Ice",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11002,7 +11002,7 @@
   {
    "name": "Purity of Lightning",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11017,7 +11017,7 @@
   {
    "name": "Pyre Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11032,7 +11032,7 @@
   {
    "name": "Pyroclast Mine",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11078,7 +11078,7 @@
   {
    "name": "Rage Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -11111,7 +11111,7 @@
   {
    "name": "Rage Vortex",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11142,7 +11142,7 @@
   {
    "name": "Rain of Arrows",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -11177,7 +11177,7 @@
   {
    "name": "Raise Spectre",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11208,7 +11208,7 @@
   {
    "name": "Raise Zombie",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -11239,7 +11239,7 @@
   {
    "name": "Rallying Cry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -11270,7 +11270,7 @@
   {
    "name": "Reap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11301,7 +11301,7 @@
   {
    "name": "Reave",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -11334,7 +11334,7 @@
   {
    "name": "Rejuvenation Totem",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11349,7 +11349,7 @@
   {
    "name": "Return to Dust",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11364,7 +11364,7 @@
   {
    "name": "Returning Projectiles Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -11399,7 +11399,7 @@
   {
    "name": "Righteous Fire",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11414,7 +11414,7 @@
   {
    "name": "Rolling Magma",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -11447,7 +11447,7 @@
   {
    "name": "Rupture Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11462,7 +11462,7 @@
   {
    "name": "Ruthless Support",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -11512,7 +11512,7 @@
   {
    "name": "Sacred Wisps Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11527,7 +11527,7 @@
   {
    "name": "Sacrifice Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -11558,7 +11558,7 @@
   {
    "name": "Sadism Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -11591,7 +11591,7 @@
   {
    "name": "Scorching Ray",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -11626,7 +11626,7 @@
   {
    "name": "Scornful Herald Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11641,7 +11641,7 @@
   {
    "name": "Scourge Arrow",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11672,7 +11672,7 @@
   {
    "name": "Searing Bond",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -11703,7 +11703,7 @@
   {
    "name": "Second Wind Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -11736,7 +11736,7 @@
   {
    "name": "Seismic Cry",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -11769,7 +11769,7 @@
   {
    "name": "Seismic Trap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11800,7 +11800,7 @@
   {
    "name": "Seize the Flesh",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11815,7 +11815,7 @@
   {
    "name": "Shattering Steel",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -11846,7 +11846,7 @@
   {
    "name": "Shield Charge",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -11877,7 +11877,7 @@
   {
    "name": "Shield Crush",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -11908,7 +11908,7 @@
   {
    "name": "Shield of Light",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -11923,7 +11923,7 @@
   {
    "name": "Shock Nova",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -11954,7 +11954,7 @@
   {
    "name": "Shockwave Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -11987,7 +11987,7 @@
   {
    "name": "Shockwave Totem",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -12018,7 +12018,7 @@
   {
    "name": "Shrapnel Ballista",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -12049,7 +12049,7 @@
   {
    "name": "Siege Ballista",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12080,7 +12080,7 @@
   {
    "name": "Sigil of Power",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -12113,7 +12113,7 @@
   {
    "name": "Siphoning Trap",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -12144,7 +12144,7 @@
   {
    "name": "Slower Projectiles Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12159,7 +12159,7 @@
   {
    "name": "Smite",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -12190,7 +12190,7 @@
   {
    "name": "Smoke Mine",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -12223,7 +12223,7 @@
   {
    "name": "Snipe",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -12254,7 +12254,7 @@
   {
    "name": "Sniper's Mark",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -12287,7 +12287,7 @@
   {
    "name": "Somatic Shell",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12302,7 +12302,7 @@
   {
    "name": "Soul Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -12333,7 +12333,7 @@
   {
    "name": "Soulrend",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -12368,7 +12368,7 @@
   {
    "name": "Spark",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12383,7 +12383,7 @@
   {
    "name": "Spectral Helix",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12414,7 +12414,7 @@
   {
    "name": "Spectral Shield Throw",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -12445,7 +12445,7 @@
   {
    "name": "Spectral Throw",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -12476,7 +12476,7 @@
   {
    "name": "Spell Cascade Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -12513,7 +12513,7 @@
   {
    "name": "Spell Echo Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -12556,7 +12556,7 @@
   {
    "name": "Spell Totem Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12571,7 +12571,7 @@
   {
    "name": "Spellblade Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -12602,7 +12602,7 @@
   {
    "name": "Spellslinger",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -12633,7 +12633,7 @@
   {
    "name": "Spirit Offering",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12648,7 +12648,7 @@
   {
    "name": "Split Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -12681,7 +12681,7 @@
   {
    "name": "Splitting Steel",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -12714,7 +12714,7 @@
   {
    "name": "Static Strike",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12749,7 +12749,7 @@
   {
    "name": "Steelskin",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -12786,7 +12786,7 @@
   {
    "name": "Storm Brand",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12817,7 +12817,7 @@
   {
    "name": "Storm Burst",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12850,7 +12850,7 @@
   {
    "name": "Storm Call",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -12881,7 +12881,7 @@
   {
    "name": "Storm Rain",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -12912,7 +12912,7 @@
   {
    "name": "Stormbind",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -12945,7 +12945,7 @@
   {
    "name": "Stormblast Mine",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Enemy at the Gate",
@@ -12976,7 +12976,7 @@
   {
    "name": "Stun Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -12991,7 +12991,7 @@
   {
    "name": "Summon Carrion Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13024,7 +13024,7 @@
   {
    "name": "Summon Chaos Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13067,7 +13067,7 @@
   {
    "name": "Summon Flame Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13110,7 +13110,7 @@
   {
    "name": "Summon Holy Relic",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -13141,7 +13141,7 @@
   {
    "name": "Summon Ice Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13184,7 +13184,7 @@
   {
    "name": "Summon Lightning Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13227,7 +13227,7 @@
   {
    "name": "Summon Phantasm Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -13260,7 +13260,7 @@
   {
    "name": "Summon Raging Spirit",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -13291,7 +13291,7 @@
   {
    "name": "Summon Reaper",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -13322,7 +13322,7 @@
   {
    "name": "Summon Skeletons",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -13353,7 +13353,7 @@
   {
    "name": "Summon Skitterbots",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -13384,7 +13384,7 @@
   {
    "name": "Summon Stone Golem",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13427,7 +13427,7 @@
   {
    "name": "Sunder",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -13458,7 +13458,7 @@
   {
    "name": "Sweep",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -13491,7 +13491,7 @@
   {
    "name": "Swift Affliction Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -13524,7 +13524,7 @@
   {
    "name": "Swift Assembly Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -13555,7 +13555,7 @@
   {
    "name": "Swiftbrand Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -13586,7 +13586,7 @@
   {
    "name": "Swordstorm",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13601,7 +13601,7 @@
   {
    "name": "Tectonic Slam",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -13634,7 +13634,7 @@
   {
    "name": "Tempest Shield",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13649,7 +13649,7 @@
   {
    "name": "Temporal Chains",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -13684,7 +13684,7 @@
   {
    "name": "Temporal Rift",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13715,7 +13715,7 @@
   {
    "name": "Tender Embrace",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13730,7 +13730,7 @@
   {
    "name": "The Great Avalanche",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13745,7 +13745,7 @@
   {
    "name": "The Grey Wind Howls",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13760,7 +13760,7 @@
   {
    "name": "Thunderstorm",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13775,7 +13775,7 @@
   {
    "name": "Tornado",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -13808,7 +13808,7 @@
   {
    "name": "Tornado Shot",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -13841,7 +13841,7 @@
   {
    "name": "Toxic Rain",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -13872,7 +13872,7 @@
   {
    "name": "Transfusion Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13887,7 +13887,7 @@
   {
    "name": "Trap and Mine Damage Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -13918,7 +13918,7 @@
   {
    "name": "Trap Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -13933,7 +13933,7 @@
   {
    "name": "Trauma Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -13966,7 +13966,7 @@
   {
    "name": "Trinity Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -14001,7 +14001,7 @@
   {
    "name": "Unbound Ailments Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -14034,7 +14034,7 @@
   {
    "name": "Unearth",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -14065,7 +14065,7 @@
   {
    "name": "Unholy Trinity Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14080,7 +14080,7 @@
   {
    "name": "Unleash Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -14117,7 +14117,7 @@
   {
    "name": "Urgent Orders Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "A Fixture of Fate",
@@ -14150,7 +14150,7 @@
   {
    "name": "Vaal Absolution",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14165,7 +14165,7 @@
   {
    "name": "Vaal Ancestral Warchief",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14180,7 +14180,7 @@
   {
    "name": "Vaal Animate Weapon",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14195,7 +14195,7 @@
   {
    "name": "Vaal Arc",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14210,7 +14210,7 @@
   {
    "name": "Vaal Arctic Armour",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14225,7 +14225,7 @@
   {
    "name": "Vaal Blade Flurry",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14240,7 +14240,7 @@
   {
    "name": "Vaal Blade Vortex",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14255,7 +14255,7 @@
   {
    "name": "Vaal Blight",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14285,7 +14285,7 @@
   {
    "name": "Vaal Burning Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14300,7 +14300,7 @@
   {
    "name": "Vaal Caustic Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14315,7 +14315,7 @@
   {
    "name": "Vaal Clarity",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14330,7 +14330,7 @@
   {
    "name": "Vaal Cleave",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14345,7 +14345,7 @@
   {
    "name": "Vaal Cold Snap",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14360,7 +14360,7 @@
   {
    "name": "Vaal Cyclone",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14375,7 +14375,7 @@
   {
    "name": "Vaal Detonate Dead",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14390,7 +14390,7 @@
   {
    "name": "Vaal Discipline",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14405,7 +14405,7 @@
   {
    "name": "Vaal Domination",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14420,7 +14420,7 @@
   {
    "name": "Vaal Double Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14435,7 +14435,7 @@
   {
    "name": "Vaal Earthquake",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14450,7 +14450,7 @@
   {
    "name": "Vaal Fireball",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14465,7 +14465,7 @@
   {
    "name": "Vaal Firestorm",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14480,7 +14480,7 @@
   {
    "name": "Vaal Flameblast",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14495,7 +14495,7 @@
   {
    "name": "Vaal Flicker Strike",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14510,7 +14510,7 @@
   {
    "name": "Vaal Glacial Hammer",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14525,7 +14525,7 @@
   {
    "name": "Vaal Grace",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14540,7 +14540,7 @@
   {
    "name": "Vaal Ground Slam",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14555,7 +14555,7 @@
   {
    "name": "Vaal Haste",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14570,7 +14570,7 @@
   {
    "name": "Vaal Ice Nova",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14585,7 +14585,7 @@
   {
    "name": "Vaal Ice Shot",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14600,7 +14600,7 @@
   {
    "name": "Vaal Immortal Call",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14615,7 +14615,7 @@
   {
    "name": "Vaal Impurity of Fire",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14630,7 +14630,7 @@
   {
    "name": "Vaal Impurity of Ice",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14645,7 +14645,7 @@
   {
    "name": "Vaal Impurity of Lightning",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14660,7 +14660,7 @@
   {
    "name": "Vaal Lightning Arrow",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14675,7 +14675,7 @@
   {
    "name": "Vaal Lightning Strike",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14690,7 +14690,7 @@
   {
    "name": "Vaal Lightning Trap",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14705,7 +14705,7 @@
   {
    "name": "Vaal Lightning Warp",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14720,7 +14720,7 @@
   {
    "name": "Vaal Molten Shell",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14735,7 +14735,7 @@
   {
    "name": "Vaal Molten Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14750,7 +14750,7 @@
   {
    "name": "Vaal Power Siphon",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14765,7 +14765,7 @@
   {
    "name": "Vaal Rain of Arrows",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14780,7 +14780,7 @@
   {
    "name": "Vaal Reap",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14795,7 +14795,7 @@
   {
    "name": "Vaal Reave",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14810,7 +14810,7 @@
   {
    "name": "Vaal Rejuvenation Totem",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14825,7 +14825,7 @@
   {
    "name": "Vaal Righteous Fire",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14840,7 +14840,7 @@
   {
    "name": "Vaal Sacrifice Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14855,7 +14855,7 @@
   {
    "name": "Vaal Smite",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14870,7 +14870,7 @@
   {
    "name": "Vaal Spark",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14885,7 +14885,7 @@
   {
    "name": "Vaal Spectral Throw",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14900,7 +14900,7 @@
   {
    "name": "Vaal Split Arrow",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14915,7 +14915,7 @@
   {
    "name": "Vaal Storm Call",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14930,7 +14930,7 @@
   {
    "name": "Vaal Summon Skeletons",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14945,7 +14945,7 @@
   {
    "name": "Vaal Temptation Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14960,7 +14960,7 @@
   {
    "name": "Vaal Venom Gyre",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14975,7 +14975,7 @@
   {
    "name": "Vaal Volcanic Fissure",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -14990,7 +14990,7 @@
   {
    "name": "Vampiric Link",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15005,7 +15005,7 @@
   {
    "name": "Vengeful Cry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15020,7 +15020,7 @@
   {
    "name": "Venom Gyre",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -15051,7 +15051,7 @@
   {
    "name": "Vicious Projectiles Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -15086,7 +15086,7 @@
   {
    "name": "Vigilant Strike",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -15123,7 +15123,7 @@
   {
    "name": "Vile Toxins Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -15154,7 +15154,7 @@
   {
    "name": "Violent Desire",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15169,7 +15169,7 @@
   {
    "name": "Viper Strike",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Twilight Strand",
@@ -15200,7 +15200,7 @@
   {
    "name": "Vitality",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -15235,7 +15235,7 @@
   {
    "name": "Void Manipulation Support",
    "required_level": "8",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -15270,7 +15270,7 @@
   {
    "name": "Void Shockwave Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15285,7 +15285,7 @@
   {
    "name": "Void Sphere",
    "required_level": "34",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Breaking the Seal",
@@ -15322,7 +15322,7 @@
   {
    "name": "Voidstorm Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15337,7 +15337,7 @@
   {
    "name": "Volatile Dead",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -15370,7 +15370,7 @@
   {
    "name": "Volatility Support",
    "required_level": "18",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Sharp and Cruel",
@@ -15401,7 +15401,7 @@
   {
    "name": "Volcanic Fissure",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -15432,7 +15432,7 @@
   {
    "name": "Volley Support",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Mercy Mission",
@@ -15467,7 +15467,7 @@
   {
    "name": "Voltaxic Burst",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -15498,7 +15498,7 @@
   {
    "name": "Vortex",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15513,7 +15513,7 @@
   {
    "name": "Vulnerability",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -15548,7 +15548,7 @@
   {
    "name": "Wall of Force",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15563,7 +15563,7 @@
   {
    "name": "War Banner",
    "required_level": "4",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Breaking Some Eggs",
@@ -15594,7 +15594,7 @@
   {
    "name": "Ward Support",
    "required_level": "72",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15609,7 +15609,7 @@
   {
    "name": "Warlord's Mark",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "str",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -15642,7 +15642,7 @@
   {
    "name": "Wave of Conviction",
    "required_level": "16",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Intruders in Black",
@@ -15673,7 +15673,7 @@
   {
    "name": "Whirling Blades",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -15708,7 +15708,7 @@
   {
    "name": "Wild Strike",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "Sever the Right Hand",
@@ -15739,7 +15739,7 @@
   {
    "name": "Windburst Support",
    "required_level": "31",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15754,7 +15754,7 @@
   {
    "name": "Winter Orb",
    "required_level": "28",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15769,7 +15769,7 @@
   {
    "name": "Wintertide Brand",
    "required_level": "12",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Siren's Cadence",
@@ -15800,7 +15800,7 @@
   {
    "name": "Wither",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -15831,7 +15831,7 @@
   {
    "name": "Withering Step",
    "required_level": "10",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Caged Brute",
@@ -15864,7 +15864,7 @@
   {
    "name": "Withering Touch Support",
    "required_level": "38",
-   "primary_attr": null,
+   "primary_attr": "dex",
    "quest_rewards": [
     {
      "quest": "The Eternal Nightmare",
@@ -15897,7 +15897,7 @@
   {
    "name": "Wrath",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",
@@ -15930,7 +15930,7 @@
   {
    "name": "Wreathed in Light",
    "required_level": "1",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [],
    "vendor_rewards": [
     {
@@ -15945,7 +15945,7 @@
   {
    "name": "Zealotry",
    "required_level": "24",
-   "primary_attr": null,
+   "primary_attr": "int",
    "quest_rewards": [
     {
      "quest": "Lost in Love",

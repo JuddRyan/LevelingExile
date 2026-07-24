@@ -221,6 +221,61 @@ function applyRequiredLevels(catalogByName, gemsJson) {
   return { filled, byBaseId: byBaseId.size, byName: byName.size };
 }
 
+/** RePoE gem socket color → primary_attr (prefer color over stat_requirements). */
+const COLOR_TO_PRIMARY_ATTR = {
+  r: 'str',
+  g: 'dex',
+  b: 'int',
+};
+
+function colorToPrimaryAttr(color) {
+  if (color == null || color === '') return null;
+  const key = String(color).trim().toLowerCase();
+  return COLOR_TO_PRIMARY_ATTR[key] ?? null; // w / unknown → null
+}
+
+/**
+ * Primary attributes from RePoE gems.json `color` (r/g/b/w).
+ * Indexed by base_item id and display name — same pattern as required levels.
+ */
+function primaryAttrsFromGemsJson(gemsJson) {
+  const byBaseId = new Map();
+  const byName = new Map();
+
+  for (const gem of Object.values(gemsJson || {})) {
+    const attr = colorToPrimaryAttr(gem?.color);
+    // Skip white/unknown for maps so a later coloured entry can win if shared.
+    if (attr == null) continue;
+
+    const baseId = gem?.base_item?.id;
+    if (baseId && !byBaseId.has(baseId)) {
+      byBaseId.set(baseId, attr);
+    }
+
+    const name = String(
+      gem?.display_name || gem?.base_item?.display_name || '',
+    ).trim();
+    if (!name || !isPlayableGemName(name)) continue;
+    const key = normalizeKey(name);
+    if (!byName.has(key)) byName.set(key, attr);
+  }
+
+  return { byBaseId, byName };
+}
+
+function applyPrimaryAttrs(catalogByName, gemsJson) {
+  const { byBaseId, byName } = primaryAttrsFromGemsJson(gemsJson);
+  let filled = 0;
+  for (const gem of catalogByName.values()) {
+    const fromId = gem.repoe_id ? byBaseId.get(gem.repoe_id) : null;
+    const fromName = byName.get(normalizeKey(gem.name));
+    const attr = fromId ?? fromName ?? null;
+    gem.primary_attr = attr;
+    if (attr != null) filled += 1;
+  }
+  return { filled, byBaseId: byBaseId.size, byName: byName.size };
+}
+
 function mergeRewards(catalogByName, questByName) {
   for (const gem of catalogByName.values()) {
     const fromQuest = questByName.get(normalizeKey(gem.name));
@@ -280,6 +335,7 @@ function rebuildCatalog(baseItems, gemsJson) {
 
   const catalogByName = extractGemsFromBaseItems(baseItems);
   const levelStats = applyRequiredLevels(catalogByName, gemsJson);
+  const attrStats = applyPrimaryAttrs(catalogByName, gemsJson);
   const questByName = rewardsFromQuestFile(questData);
 
   mergeRewards(catalogByName, questByName);
@@ -293,7 +349,7 @@ function rebuildCatalog(baseItems, gemsJson) {
 
   const out = {
     _comment:
-      'Rebuilt from RePoE base_items + gems.json required_level (not drop_level) + quest-gem-rewards. Run: npm run update:gems',
+      'Rebuilt from RePoE base_items + gems.json required_level/color (not drop_level) + quest-gem-rewards. Run: npm run update:gems',
     _source: {
       base_items: REPOE_BASE_ITEMS_URL,
       gems: REPOE_GEMS_URL,
@@ -341,6 +397,19 @@ function rebuildCatalog(baseItems, gemsJson) {
     }),
   );
 
+  const sampleAttrs = Object.fromEntries(
+    ['Heavy Strike', 'Fireball', 'Ice Shot', 'Portal'].map((n) => {
+      const g = gems.find((x) => x.name === n);
+      return [n, g?.primary_attr ?? null];
+    }),
+  );
+
+  const attrCounts = { str: 0, dex: 0, int: 0, null: 0 };
+  for (const g of gems) {
+    if (g.primary_attr == null) attrCounts.null += 1;
+    else if (attrCounts[g.primary_attr] != null) attrCounts[g.primary_attr] += 1;
+  }
+
   return {
     gems,
     summary: {
@@ -349,7 +418,9 @@ function rebuildCatalog(baseItems, gemsJson) {
       supports: supports.length,
       outPath: catalogPath,
       requiredLevels: levelStats,
+      primaryAttrs: { ...attrStats, counts: attrCounts },
       sampleLevels,
+      sampleAttrs,
       modernMissingCheck: checks,
       allModernPresent: Object.values(checks).every(Boolean),
     },
@@ -516,7 +587,12 @@ async function main() {
   console.log(
     `Required levels from gems.json: ${catalogSummary.requiredLevels.filled}/${catalogSummary.total}`,
   );
+  console.log(
+    `Primary attrs from gems.json color: ${catalogSummary.primaryAttrs.filled}/${catalogSummary.total}`,
+    catalogSummary.primaryAttrs.counts,
+  );
   console.log('Sample levels:', catalogSummary.sampleLevels);
+  console.log('Sample attrs:', catalogSummary.sampleAttrs);
 
   console.log('Filling missing gem icons …');
   const iconSummary = await fillMissingIcons(baseItems, gems);
