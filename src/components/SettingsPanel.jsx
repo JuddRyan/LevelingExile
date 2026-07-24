@@ -90,7 +90,7 @@ export default function SettingsPanel({
   onHotkeyListeningChange,
   onQuit,
 }) {
-  /** @type {null | 'hotkeyComplete' | 'hotkeyInteract'} */
+  /** @type {null | 'hotkeyComplete' | 'hotkeyInteract' | 'hotkeyOverlayToggle'} */
   const [listening, setListening] = useState(null);
   const [captureHint, setCaptureHint] = useState('');
   const settingsRef = useRef(settings);
@@ -105,17 +105,27 @@ export default function SettingsPanel({
   }
 
   function commitHotkeys(partial, base = settings) {
-    const { hotkeyComplete, hotkeyInteract } = dedupeHotkeys(
-      normalizeHotkey(
-        partial.hotkeyComplete ?? base.hotkeyComplete,
-        DEFAULT_SETTINGS.hotkeyComplete,
-      ),
-      normalizeHotkey(
-        partial.hotkeyInteract ?? base.hotkeyInteract,
-        DEFAULT_SETTINGS.hotkeyInteract,
-      ),
-    );
-    onChange({ ...base, hotkeyComplete, hotkeyInteract });
+    const { hotkeyComplete, hotkeyInteract, hotkeyOverlayToggle } =
+      dedupeHotkeys(
+        normalizeHotkey(
+          partial.hotkeyComplete ?? base.hotkeyComplete,
+          DEFAULT_SETTINGS.hotkeyComplete,
+        ),
+        normalizeHotkey(
+          partial.hotkeyInteract ?? base.hotkeyInteract,
+          DEFAULT_SETTINGS.hotkeyInteract,
+        ),
+        normalizeHotkey(
+          partial.hotkeyOverlayToggle ?? base.hotkeyOverlayToggle,
+          DEFAULT_SETTINGS.hotkeyOverlayToggle,
+        ),
+      );
+    onChange({
+      ...base,
+      hotkeyComplete,
+      hotkeyInteract,
+      hotkeyOverlayToggle,
+    });
   }
 
   const stopListening = useCallback(() => {
@@ -226,10 +236,15 @@ export default function SettingsPanel({
     settings.hotkeyComplete,
     DEFAULT_SETTINGS.hotkeyComplete,
   );
-  const hintInteract = dedupeHotkeys(
-    hintComplete,
-    normalizeHotkey(settings.hotkeyInteract, DEFAULT_SETTINGS.hotkeyInteract),
-  ).hotkeyInteract;
+  const { hotkeyInteract: hintInteract, hotkeyOverlayToggle: hintOverlayToggle } =
+    dedupeHotkeys(
+      hintComplete,
+      normalizeHotkey(settings.hotkeyInteract, DEFAULT_SETTINGS.hotkeyInteract),
+      normalizeHotkey(
+        settings.hotkeyOverlayToggle,
+        DEFAULT_SETTINGS.hotkeyOverlayToggle,
+      ),
+    );
 
   return (
     <div className="mx-2 mb-2 px-3 py-2.5 space-y-5 text-amber-100 shadow-lg overflow-y-auto">
@@ -346,6 +361,12 @@ export default function SettingsPanel({
             listening={listening === 'hotkeyInteract'}
             onStart={() => startListening('hotkeyInteract')}
           />
+          <HotkeyCapture
+            label="Hide / show overlay"
+            value={hintOverlayToggle}
+            listening={listening === 'hotkeyOverlayToggle'}
+            onStart={() => startListening('hotkeyOverlayToggle')}
+          />
         </div>
         <p className="text-[9px] text-amber-100/35 leading-snug">
           Click a field, hold a shortcut, then release (e.g. Alt+N). Esc or 5s
@@ -403,7 +424,7 @@ export default function SettingsPanel({
 
       <p className="text-[10px] text-amber-100/35 leading-snug">
         {hasBuild
-          ? `${hintInteract} to interact · click outside to lock · ${hintComplete} completes next gem.`
+          ? `${hintInteract} to interact · click outside to lock · ${hintComplete} completes next · ${hintOverlayToggle} hides overlay.`
           : 'Import a PoB build to start tracking gems.'}
       </p>
 

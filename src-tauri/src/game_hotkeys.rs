@@ -21,8 +21,10 @@ struct ParsedHotkey {
 pub struct GameHotkeys {
   complete: Option<ParsedHotkey>,
   interact: Option<ParsedHotkey>,
+  overlay_toggle: Option<ParsedHotkey>,
   complete_was_down: bool,
   interact_was_down: bool,
+  overlay_toggle_was_down: bool,
 }
 
 fn key_to_vk(key: &str) -> Option<u16> {
@@ -125,6 +127,13 @@ fn combo_matches(_h: &ParsedHotkey) -> bool {
   false
 }
 
+fn same_binding(a: Option<&str>, b: Option<&str>) -> bool {
+  match (a, b) {
+    (Some(x), Some(y)) => x.eq_ignore_ascii_case(y),
+    _ => false,
+  }
+}
+
 pub fn poll(app: &AppHandle) {
   let Some(state) = app.try_state::<Mutex<GameHotkeys>>() else {
     return;
@@ -135,6 +144,7 @@ pub fn poll(app: &AppHandle) {
 
   let mut fire_complete = false;
   let mut fire_interact = false;
+  let mut fire_overlay_toggle = false;
 
   if let Some(ref h) = g.complete {
     let down = combo_matches(h);
@@ -156,6 +166,16 @@ pub fn poll(app: &AppHandle) {
     g.interact_was_down = false;
   }
 
+  if let Some(ref h) = g.overlay_toggle {
+    let down = combo_matches(h);
+    if down && !g.overlay_toggle_was_down {
+      fire_overlay_toggle = true;
+    }
+    g.overlay_toggle_was_down = down;
+  } else {
+    g.overlay_toggle_was_down = false;
+  }
+
   drop(g);
 
   if fire_complete {
@@ -164,6 +184,10 @@ pub fn poll(app: &AppHandle) {
   if fire_interact {
     let _ = app.emit("game-hotkey", "interact");
   }
+  if fire_overlay_toggle {
+    let _ = app.emit("game-hotkey", "overlay-toggle");
+    crate::toggle_overlay_user_hidden(app);
+  }
 }
 
 #[tauri::command]
@@ -171,6 +195,7 @@ pub fn set_game_hotkeys(
   state: State<'_, Mutex<GameHotkeys>>,
   complete: Option<String>,
   interact: Option<String>,
+  overlay_toggle: Option<String>,
 ) -> Result<(), String> {
   let mut g = state.lock().map_err(|_| "hotkey state lock poisoned")?;
 
@@ -185,7 +210,7 @@ pub fn set_game_hotkeys(
     None | Some("") => None,
     Some(s) => {
       // Same binding as complete → only complete fires.
-      if complete.as_deref() == Some(s) {
+      if same_binding(complete.as_deref(), Some(s)) {
         None
       } else {
         Some(parse_hotkey(s).ok_or_else(|| format!("Invalid interact hotkey: {s}"))?)
@@ -193,7 +218,25 @@ pub fn set_game_hotkeys(
     }
   };
 
+  g.overlay_toggle = match overlay_toggle.as_deref() {
+    None | Some("") => None,
+    Some(s) => {
+      // Same as complete or interact → skip (those take priority).
+      if same_binding(complete.as_deref(), Some(s))
+        || same_binding(interact.as_deref(), Some(s))
+      {
+        None
+      } else {
+        Some(
+          parse_hotkey(s)
+            .ok_or_else(|| format!("Invalid overlay toggle hotkey: {s}"))?,
+        )
+      }
+    }
+  };
+
   g.complete_was_down = false;
   g.interact_was_down = false;
+  g.overlay_toggle_was_down = false;
   Ok(())
 }

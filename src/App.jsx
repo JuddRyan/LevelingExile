@@ -207,10 +207,14 @@ export default function App() {
     settings.hotkeyComplete,
     DEFAULT_SETTINGS.hotkeyComplete,
   );
-  const hotkeyInteract = dedupeHotkeys(
+  const { hotkeyInteract, hotkeyOverlayToggle } = dedupeHotkeys(
     hotkeyComplete,
     normalizeHotkey(settings.hotkeyInteract, DEFAULT_SETTINGS.hotkeyInteract),
-  ).hotkeyInteract;
+    normalizeHotkey(
+      settings.hotkeyOverlayToggle,
+      DEFAULT_SETTINGS.hotkeyOverlayToggle,
+    ),
+  );
   const dragAttrs = moveMode ? { 'data-tauri-drag-region': true } : {};
 
   const completedRef = useRef(completed);
@@ -452,7 +456,11 @@ export default function App() {
 
         // Pause while Settings is capturing a new binding.
         if (hotkeyListening) {
-          await invoke('set_game_hotkeys', { complete: null, interact: null });
+          await invoke('set_game_hotkeys', {
+            complete: null,
+            interact: null,
+            overlayToggle: null,
+          });
           if (!cancelled) setHotkeyReady(false);
           return;
         }
@@ -461,12 +469,14 @@ export default function App() {
           complete: hotkeyComplete,
           interact:
             hotkeyInteract === hotkeyComplete ? null : hotkeyInteract,
+          overlayToggle: hotkeyOverlayToggle,
         });
         if (cancelled) return;
 
         const stop = await listen('game-hotkey', (event) => {
           if (event.payload === 'complete') completeNextRef.current();
           else if (event.payload === 'interact') unlockInteractiveRef.current();
+          // overlay-toggle is handled in Rust (user-hide vs sync)
         });
         if (cancelled) {
           stop();
@@ -487,11 +497,15 @@ export default function App() {
       unlistenFn?.();
       import('@tauri-apps/api/core')
         .then(({ invoke }) =>
-          invoke('set_game_hotkeys', { complete: null, interact: null }),
+          invoke('set_game_hotkeys', {
+            complete: null,
+            interact: null,
+            overlayToggle: null,
+          }),
         )
         .catch(() => {});
     };
-  }, [hotkeyComplete, hotkeyInteract, hotkeyListening]);
+  }, [hotkeyComplete, hotkeyInteract, hotkeyOverlayToggle, hotkeyListening]);
 
   const onHotkeyListeningChange = useCallback((listening) => {
     setHotkeyListening(!!listening);
@@ -508,6 +522,7 @@ export default function App() {
       hideCompletedGems: !!next.hideCompletedGems,
       hotkeyComplete: String(next.hotkeyComplete ?? ''),
       hotkeyInteract: String(next.hotkeyInteract ?? ''),
+      hotkeyOverlayToggle: String(next.hotkeyOverlayToggle ?? ''),
     });
   }
 
@@ -598,7 +613,7 @@ export default function App() {
               {hasBuild
                 ? `${doneCount}/${orderedGems.length}${
                     hotkeyReady
-                      ? ` · ${hotkeyComplete} next · ${hotkeyInteract} edit`
+                      ? ` · ${hotkeyComplete} next · ${hotkeyInteract} edit · ${hotkeyOverlayToggle} hide`
                       : ''
                   }${interactive ? ' · interactive' : ''}${
                     moveMode ? ' · move' : ''

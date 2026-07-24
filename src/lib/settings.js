@@ -7,6 +7,7 @@ export const DEFAULT_SETTINGS = {
   hideCompletedGems: false,
   hotkeyComplete: 'Alt+N',
   hotkeyInteract: 'Alt+B',
+  hotkeyOverlayToggle: 'Alt+O',
 };
 
 /** Fixed UI scale presets (percent). */
@@ -86,16 +87,44 @@ export function normalizeHotkey(value, fallback) {
   return [...mods, normalizeKeyToken(key)].join('+');
 }
 
-export function dedupeHotkeys(complete, interact) {
+/** Keep complete / interact / overlay-toggle bindings distinct. */
+export function dedupeHotkeys(complete, interact, overlayToggle) {
   let hotkeyComplete = complete;
   let hotkeyInteract = interact;
-  if (hotkeyComplete.toLowerCase() === hotkeyInteract.toLowerCase()) {
+  let hotkeyOverlayToggle =
+    overlayToggle ?? DEFAULT_SETTINGS.hotkeyOverlayToggle;
+
+  const eq = (a, b) => a.toLowerCase() === b.toLowerCase();
+
+  if (eq(hotkeyComplete, hotkeyInteract)) {
     hotkeyInteract = DEFAULT_SETTINGS.hotkeyInteract;
-    if (hotkeyComplete.toLowerCase() === hotkeyInteract.toLowerCase()) {
+    if (eq(hotkeyComplete, hotkeyInteract)) {
       hotkeyComplete = DEFAULT_SETTINGS.hotkeyComplete;
     }
   }
-  return { hotkeyComplete, hotkeyInteract };
+
+  if (
+    eq(hotkeyOverlayToggle, hotkeyComplete) ||
+    eq(hotkeyOverlayToggle, hotkeyInteract)
+  ) {
+    hotkeyOverlayToggle = DEFAULT_SETTINGS.hotkeyOverlayToggle;
+  }
+
+  if (eq(hotkeyOverlayToggle, hotkeyComplete)) {
+    hotkeyComplete = DEFAULT_SETTINGS.hotkeyComplete;
+    if (eq(hotkeyComplete, hotkeyInteract)) {
+      hotkeyInteract = DEFAULT_SETTINGS.hotkeyInteract;
+    }
+  }
+
+  if (eq(hotkeyOverlayToggle, hotkeyInteract)) {
+    hotkeyInteract = DEFAULT_SETTINGS.hotkeyInteract;
+    if (eq(hotkeyComplete, hotkeyInteract)) {
+      hotkeyComplete = DEFAULT_SETTINGS.hotkeyComplete;
+    }
+  }
+
+  return { hotkeyComplete, hotkeyInteract, hotkeyOverlayToggle };
 }
 
 export function loadSettings() {
@@ -103,10 +132,15 @@ export function loadSettings() {
     const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
     if (!raw) return { ...DEFAULT_SETTINGS };
     const data = JSON.parse(raw);
-    const { hotkeyComplete, hotkeyInteract } = dedupeHotkeys(
-      normalizeHotkey(data.hotkeyComplete, DEFAULT_SETTINGS.hotkeyComplete),
-      normalizeHotkey(data.hotkeyInteract, DEFAULT_SETTINGS.hotkeyInteract),
-    );
+    const { hotkeyComplete, hotkeyInteract, hotkeyOverlayToggle } =
+      dedupeHotkeys(
+        normalizeHotkey(data.hotkeyComplete, DEFAULT_SETTINGS.hotkeyComplete),
+        normalizeHotkey(data.hotkeyInteract, DEFAULT_SETTINGS.hotkeyInteract),
+        normalizeHotkey(
+          data.hotkeyOverlayToggle,
+          DEFAULT_SETTINGS.hotkeyOverlayToggle,
+        ),
+      );
     return {
       scale: snapScale(data.scale ?? DEFAULT_SETTINGS.scale),
       width: clamp(Number(data.width) || DEFAULT_SETTINGS.width, 160, 800),
@@ -118,6 +152,7 @@ export function loadSettings() {
         data.hideCompletedGems ?? DEFAULT_SETTINGS.hideCompletedGems,
       hotkeyComplete,
       hotkeyInteract,
+      hotkeyOverlayToggle,
     };
   } catch {
     return { ...DEFAULT_SETTINGS };

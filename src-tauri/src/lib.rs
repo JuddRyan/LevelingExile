@@ -18,6 +18,9 @@ static OVERLAY_SHOWN: AtomicBool = AtomicBool::new(true);
 /// Tray toggle: keep overlay visible for setup/import when PoE is not running.
 static FORCE_SHOW_WHEN_POE_OFF: AtomicBool = AtomicBool::new(false);
 
+/// Manual hide via overlay-toggle hotkey — overrides sync until toggled back.
+static USER_HIDDEN_OVERLAY: AtomicBool = AtomicBool::new(false);
+
 #[cfg(target_os = "windows")]
 fn force_hwnd_topmost(window: &WebviewWindow) {
   use windows::Win32::UI::WindowsAndMessaging::{
@@ -140,6 +143,7 @@ mod poe_detect {
 }
 
 /// Sync overlay visibility with PoE:
+/// - User-hidden (toggle hotkey) → stay hidden (overrides focus sync)
 /// - PoE off + force-show off → hide
 /// - PoE off + force-show on → show (setup/import)
 /// - PoE on → show when PoE or overlay focused; hide otherwise
@@ -147,6 +151,13 @@ fn sync_overlay_with_game(app: &AppHandle) {
   let Some(window) = app.get_webview_window("main") else {
     return;
   };
+
+  if USER_HIDDEN_OVERLAY.load(Ordering::SeqCst) {
+    if OVERLAY_SHOWN.swap(false, Ordering::SeqCst) {
+      let _ = window.hide();
+    }
+    return;
+  }
 
   #[cfg(target_os = "windows")]
   {
@@ -186,9 +197,29 @@ fn sync_overlay_with_game(app: &AppHandle) {
   }
 }
 
+/// Toggle manual overlay hide. While user-hidden, [`sync_overlay_with_game`]
+/// will not show the window; clearing it restores normal focus sync.
+pub fn toggle_overlay_user_hidden(app: &AppHandle) {
+  let next = !USER_HIDDEN_OVERLAY.load(Ordering::SeqCst);
+  USER_HIDDEN_OVERLAY.store(next, Ordering::SeqCst);
+
+  let Some(window) = app.get_webview_window("main") else {
+    return;
+  };
+
+  if next {
+    let _ = window.hide();
+    OVERLAY_SHOWN.store(false, Ordering::SeqCst);
+  } else {
+    // Re-apply normal PoE / force-show visibility rules.
+    sync_overlay_with_game(app);
+  }
+}
+
 #[tauri::command]
 fn force_always_on_top(app: AppHandle) {
-  // Explicit request from UI — always apply, even if paused.
+  // Explicit request from UI — clear manual hide and always apply.
+  USER_HIDDEN_OVERLAY.store(false, Ordering::SeqCst);
   if let Some(window) = app.get_webview_window("main") {
     let _ = window.show();
     OVERLAY_SHOWN.store(true, Ordering::SeqCst);
