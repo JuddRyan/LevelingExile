@@ -2,6 +2,7 @@ import { inflate, inflateRaw } from 'pako';
 import {
   compareEnrichedGems,
   enrichGem,
+  canonicalizePoBGemName,
   skillIdToName,
 } from '../data/gemLookup';
 import {
@@ -146,21 +147,12 @@ function gemNameFromNode(node) {
 
   for (const raw of candidates) {
     if (!raw) continue;
-    const name = String(raw).trim();
-    if (!name || /^none$/i.test(name)) continue;
-
-    // PoB sometimes stores this support without the Support* skillId / suffix.
-    if (
-      /^prismatic burst$/i.test(name) ||
-      /^PrismaticBurst$/i.test(skillId || '')
-    ) {
-      return 'Prismatic Burst Support';
-    }
-
+    const name = canonicalizePoBGemName(raw);
+    if (!name) continue;
     return name;
   }
 
-  return null;
+  return canonicalizePoBGemName(null, skillId);
 }
 
 /** PoB socket group: enabled if enabled="true" or active="true". */

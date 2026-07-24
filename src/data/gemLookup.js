@@ -218,8 +218,48 @@ export function skillIdToName(skillId) {
   return isSupport ? `${body} Support` : body;
 }
 
+/**
+ * PoB skillId / legacy display names → current catalog gem names.
+ * Keys are normalizeKey(name) or lowercased skillId (no spaces).
+ */
+const POB_GEM_ALIASES = new Map([
+  ['prismatic burst', 'Prismatic Burst Support'],
+  ['prismaticburst', 'Prismatic Burst Support'],
+  ['brand support', 'Arcanist Brand'],
+  ['supportbrand', 'Arcanist Brand'],
+]);
+
+/**
+ * Resolve a PoB gem display name or skillId through the alias map.
+ * Returns the catalog name when aliased, otherwise the trimmed display name
+ * (or null if empty / "None").
+ */
+export function canonicalizePoBGemName(name, skillId = null) {
+  if (name != null) {
+    const trimmed = String(name).trim();
+    if (trimmed && !/^none$/i.test(trimmed)) {
+      const key = normalizeKey(trimmed);
+      if (POB_GEM_ALIASES.has(key)) return POB_GEM_ALIASES.get(key);
+      // skillId-style keys (e.g. SupportBrand) land here when passed as name
+      const compact = key.replace(/\s+/g, '');
+      if (compact !== key && POB_GEM_ALIASES.has(compact)) {
+        return POB_GEM_ALIASES.get(compact);
+      }
+      return trimmed;
+    }
+  }
+
+  if (skillId) {
+    const idKey = String(skillId).trim().toLowerCase();
+    if (POB_GEM_ALIASES.has(idKey)) return POB_GEM_ALIASES.get(idKey);
+  }
+
+  return null;
+}
+
 function lookupGemRecord(name) {
-  const key = normalizeKey(name);
+  const canonical = canonicalizePoBGemName(name) || name;
+  const key = normalizeKey(canonical);
   if (!key) return null;
 
   if (GEM_BY_NAME.has(key)) return GEM_BY_NAME.get(key);
