@@ -37,6 +37,19 @@ function firstSkillSetId(skillSets) {
   return (withGems || skillSets[0]).id;
 }
 
+function gemActLabel(gem) {
+  if (!Number.isFinite(Number(gem?.act))) return null;
+  return `Act ${gem.act}`;
+}
+
+function gemSourceLine(gem) {
+  if (gem?.vendorItem) return `L${gem.level} · vendor item`;
+  const parts = [`L${gem.level}`];
+  if (gem.quest) parts.push(gem.quest);
+  if (gem.vendor) parts.push(gem.vendor);
+  return parts.join(' · ');
+}
+
 function loadPersisted() {
   const empty = {
     skillSets: [],
@@ -654,12 +667,14 @@ export default function App() {
                   >
                     Next up
                   </p>
-                  <p
-                    className="text-xs font-bold text-amber-300 leading-tight"
-                    style={overlayMode ? { textShadow } : undefined}
-                  >
-                    Act {nextUp.act}
-                  </p>
+                  {Number.isFinite(Number(nextUp.act)) && (
+                    <p
+                      className="text-xs font-bold text-amber-300 leading-tight"
+                      style={overlayMode ? { textShadow } : undefined}
+                    >
+                      Act {nextUp.act}
+                    </p>
+                  )}
                   <p
                     className="mt-0.5 text-sm font-semibold text-amber-50 leading-snug"
                     style={overlayMode ? { textShadow } : undefined}
@@ -676,8 +691,16 @@ export default function App() {
                     style={overlayMode ? { textShadow } : undefined}
                   >
                     <p>Level {nextUp.level}</p>
-                    <p>{nextUp.quest}</p>
-                    <p className="text-amber-200/90">{nextUp.vendor}</p>
+                    {nextUp.vendorItem ? (
+                      <p>vendor item</p>
+                    ) : (
+                      <>
+                        {nextUp.quest && <p>{nextUp.quest}</p>}
+                        {nextUp.vendor && (
+                          <p className="text-amber-200/90">{nextUp.vendor}</p>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -714,6 +737,7 @@ export default function App() {
             {visibleGems.map((gem) => {
               const isDone = !!completed[gem.name];
               const isNext = nextUp?.name === gem.name;
+              const actLabel = gemActLabel(gem);
               return (
                 <li key={gem.name}>
                   <button
@@ -761,18 +785,20 @@ export default function App() {
                           )}
                         </p>
                       </div>
-                      <span
-                        className="shrink-0 text-[10px] font-semibold text-amber-300"
-                        style={overlayMode ? { textShadow } : undefined}
-                      >
-                        Act {gem.act}
-                      </span>
+                      {actLabel && (
+                        <span
+                          className="shrink-0 text-[10px] font-semibold text-amber-300"
+                          style={overlayMode ? { textShadow } : undefined}
+                        >
+                          {actLabel}
+                        </span>
+                      )}
                     </div>
                     <p
                       className="mt-0.5 text-[10px] text-amber-100/80 pl-8"
                       style={overlayMode ? { textShadow } : undefined}
                     >
-                      L{gem.level} · {gem.quest} · {gem.vendor}
+                      {gemSourceLine(gem)}
                     </p>
                   </button>
                 </li>
