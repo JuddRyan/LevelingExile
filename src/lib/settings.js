@@ -2,6 +2,9 @@ export const DEFAULT_SETTINGS = {
   scale: 100, // percent — must be one of SCALE_STEPS
   width: 320,
   height: 450,
+  /** Logical window position; null = use OS/default placement. */
+  posX: null,
+  posY: null,
   autoAdvanceSkillSet: true,
   showNextUp: true,
   hideCompletedGems: false,
@@ -30,6 +33,20 @@ const KEY_ALIASES = {
 
 export function clamp(n, min, max) {
   return Math.min(max, Math.max(min, n));
+}
+
+/** Parse a saved logical coordinate; invalid/missing → null. */
+export function parseWindowPos(value) {
+  if (value == null || value === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? Math.round(n) : null;
+}
+
+/** True when both logical coords are usable for setPosition. */
+export function hasSavedWindowPos(settings) {
+  return (
+    Number.isFinite(settings?.posX) && Number.isFinite(settings?.posY)
+  );
 }
 
 /** Snap a scale percent to the nearest SCALE_STEPS value. */
@@ -145,6 +162,8 @@ export function loadSettings() {
       scale: snapScale(data.scale ?? DEFAULT_SETTINGS.scale),
       width: clamp(Number(data.width) || DEFAULT_SETTINGS.width, 160, 800),
       height: clamp(Number(data.height) || DEFAULT_SETTINGS.height, 200, 1200),
+      posX: parseWindowPos(data.posX),
+      posY: parseWindowPos(data.posY),
       autoAdvanceSkillSet:
         data.autoAdvanceSkillSet ?? DEFAULT_SETTINGS.autoAdvanceSkillSet,
       showNextUp: data.showNextUp ?? DEFAULT_SETTINGS.showNextUp,

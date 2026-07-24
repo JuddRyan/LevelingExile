@@ -6,9 +6,11 @@ import {
   DEFAULT_SETTINGS,
   effectiveWindowSize,
   findNextIncompleteSkillSet,
+  hasSavedWindowPos,
   loadSettings,
   normalizeHotkey,
   dedupeHotkeys,
+  parseWindowPos,
   saveSettings,
   snapScale,
 } from './lib/settings';
@@ -142,9 +144,13 @@ async function exitApp() {
   }
 }
 
-async function applyWindowLayout(settings, extraCssWidth = 0) {
+async function applyWindowLayout(
+  settings,
+  extraCssWidth = 0,
+  { applyPosition = false } = {},
+) {
   try {
-    const { LogicalSize } = await import('@tauri-apps/api/dpi');
+    const { LogicalSize, LogicalPosition } = await import('@tauri-apps/api/dpi');
     const win = await getAppWindow();
     await win.setAlwaysOnTop(true);
 
@@ -154,8 +160,37 @@ async function applyWindowLayout(settings, extraCssWidth = 0) {
     await win.setSize(
       new LogicalSize(width + Math.round(extra * factor), height),
     );
+
+    // Only restore placement on startup — size/scale updates must not move the window.
+    if (applyPosition && hasSavedWindowPos(settings)) {
+      await win.setPosition(
+        new LogicalPosition(settings.posX, settings.posY),
+      );
+    }
   } catch {
     // browser
+  }
+}
+
+/** Read current outer position as logical coords, or null. */
+async function readWindowLogicalPos() {
+  try {
+    const win = await getAppWindow();
+    const physical = await win.outerPosition();
+    const factor = await win.scaleFactor();
+    const logical =
+      typeof physical.toLogical === 'function'
+        ? physical.toLogical(factor)
+        : {
+            x: physical.x / factor,
+            y: physical.y / factor,
+          };
+    const posX = parseWindowPos(logical.x);
+    const posY = parseWindowPos(logical.y);
+    if (posX == null || posY == null) return null;
+    return { posX, posY };
+  } catch {
+    return null;
   }
 }
 
@@ -246,15 +281,79 @@ export default function App() {
   }, [settings]);
 
   useEffect(() => {
-    applyWindowLayout(settings, showGemLinks ? LINKS_PANEL_WIDTH : 0);
+    applyWindowLayout(settings, showGemLinks ? LINKS_PANEL_WIDTH : 0, {
+      applyPosition: false,
+    });
   }, [settings.scale, settings.width, settings.height, showGemLinks]);
 
-  // Startup: always on top + apply size
+  // Startup: always on top + apply size and saved position
   useEffect(() => {
     const initial = loadSettings();
-    applyWindowLayout(initial, 0);
+    applyWindowLayout(initial, 0, { applyPosition: true });
     ensureAlwaysOnTop();
   }, []);
+
+  // Persist position after the user finishes moving the window (drag / move mode).
+  const saveWindowPosition = useCallback(async () => {
+    const pos = await readWindowLogicalPos();
+    if (!pos) return;
+    setSettings((prev) => {
+      if (prev.posX === pos.posX && prev.posY === pos.posY) return prev;
+      return { ...prev, posX: pos.posX, posY: pos.posY };
+    });
+  }, []);
+
+  // Header drag (data-tauri-drag-region) steals focus; suppress lock until drag ends.
+  // Also save placement when a move-mode drag finishes.
+  useEffect(() => {
+    let clearTimer = null;
+    let dragActive = false;
+    const onPointerDown = (e) => {
+      if (!moveMode) return;
+      if (e.target?.closest?.('[data-tauri-drag-region]')) {
+        clearTimeout(clearTimer);
+        suppressBlurLockRef.current = true;
+        dragActive = true;
+      }
+    };
+    // Delay clear so a drag's blur can run first; skip clear if focus already lost.
+    const clearIfFocused = () => {
+      clearTimeout(clearTimer);
+      clearTimer = setTimeout(() => {
+        if (document.hasFocus()) suppressBlurLockRef.current = false;
+      }, 100);
+    };
+    const onPointerUp = () => {
+      clearIfFocused();
+      if (!dragActive) return;
+      dragActive = false;
+      // Let OS finish the drag before reading outer position.
+      setTimeout(() => {
+        saveWindowPosition();
+      }, 50);
+    };
+    window.addEventListener('pointerdown', onPointerDown, true);
+    window.addEventListener('pointerup', onPointerUp, true);
+    window.addEventListener('pointercancel', onPointerUp, true);
+    return () => {
+      clearTimeout(clearTimer);
+      window.removeEventListener('pointerdown', onPointerDown, true);
+      window.removeEventListener('pointerup', onPointerUp, true);
+      window.removeEventListener('pointercancel', onPointerUp, true);
+    };
+  }, [moveMode, saveWindowPosition]);
+
+  // Leaving move mode also captures the latest placement (skip initial mount).
+  const prevMoveModeRef = useRef(moveMode);
+  useEffect(() => {
+    const wasMoveMode = prevMoveModeRef.current;
+    prevMoveModeRef.current = moveMode;
+    if (!wasMoveMode || moveMode) return undefined;
+    const timer = setTimeout(() => {
+      saveWindowPosition();
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [moveMode, saveWindowPosition]);
 
   // Drop links panel when there is no build to show
   useEffect(() => {
@@ -292,34 +391,6 @@ export default function App() {
       setSettingsOpen(false);
     }
   }, [clickThrough]);
-
-  // Header drag (data-tauri-drag-region) steals focus; suppress lock until drag ends.
-  useEffect(() => {
-    let clearTimer = null;
-    const onPointerDown = (e) => {
-      if (!moveMode) return;
-      if (e.target?.closest?.('[data-tauri-drag-region]')) {
-        clearTimeout(clearTimer);
-        suppressBlurLockRef.current = true;
-      }
-    };
-    // Delay clear so a drag's blur can run first; skip clear if focus already lost.
-    const clearIfFocused = () => {
-      clearTimeout(clearTimer);
-      clearTimer = setTimeout(() => {
-        if (document.hasFocus()) suppressBlurLockRef.current = false;
-      }, 100);
-    };
-    window.addEventListener('pointerdown', onPointerDown, true);
-    window.addEventListener('pointerup', clearIfFocused, true);
-    window.addEventListener('pointercancel', clearIfFocused, true);
-    return () => {
-      clearTimeout(clearTimer);
-      window.removeEventListener('pointerdown', onPointerDown, true);
-      window.removeEventListener('pointerup', clearIfFocused, true);
-      window.removeEventListener('pointercancel', clearIfFocused, true);
-    };
-  }, [moveMode]);
 
   useEffect(() => {
     let unlisten = null;
@@ -517,6 +588,8 @@ export default function App() {
       scale: snapScale(next.scale ?? DEFAULT_SETTINGS.scale),
       width: clamp(Number(next.width) || 320, 160, 800),
       height: clamp(Number(next.height) || 450, 200, 1200),
+      posX: parseWindowPos(next.posX),
+      posY: parseWindowPos(next.posY),
       autoAdvanceSkillSet: !!next.autoAdvanceSkillSet,
       showNextUp: next.showNextUp !== false,
       hideCompletedGems: !!next.hideCompletedGems,
