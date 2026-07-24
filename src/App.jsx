@@ -639,337 +639,348 @@ export default function App() {
   const shellWidth =
     settings.width + (showGemLinks ? LINKS_PANEL_WIDTH : 0);
 
+  // Main column chrome (split across grid rows so links can share row heights).
+  const mainChrome = overlayMode
+    ? interactive
+      ? 'border-amber-400/55 bg-slate-950/35'
+      : 'border-transparent bg-transparent'
+    : 'border-amber-500/30 bg-slate-900/85 backdrop-blur-md shadow-2xl';
+
   return (
     <div className="h-screen w-screen overflow-hidden bg-transparent">
       <div
-        className="flex flex-row select-none text-amber-100 overflow-hidden"
+        className="grid select-none text-amber-100 overflow-hidden"
         style={{
           width: shellWidth,
           height: settings.height,
           zoom: scaleFactor,
           pointerEvents: clickThrough ? 'none' : 'auto',
+          gridTemplateColumns: showGemLinks
+            ? `${settings.width}px ${LINKS_PANEL_WIDTH}px`
+            : `${settings.width}px`,
+          gridTemplateRows: 'auto 1fr',
         }}
       >
-      <div
-        className={[
-          'flex flex-col overflow-hidden shrink-0',
-          overlayMode
-            ? interactive
-              ? 'rounded-md border border-amber-400/55 bg-slate-950/35'
-              : 'bg-transparent'
-            : 'bg-slate-900/85 backdrop-blur-md border border-amber-500/30 shadow-2xl rounded-md',
-        ].join(' ')}
-        style={{
-          width: settings.width,
-          height: settings.height,
-        }}
-      >
-      {(hasBuild || uiInteractive) && (
-        <div
-          {...(uiInteractive ? dragAttrs : {})}
-          className={[
-            'flex items-center justify-between gap-2 px-2 py-1.5 shrink-0',
-            uiInteractive ? '' : 'invisible pointer-events-none',
-            overlayMode ? 'bg-transparent' : 'border-b border-amber-500/20',
-          ].join(' ')}
-          aria-hidden={!uiInteractive}
-        >
+        {(hasBuild || uiInteractive) && (
           <div
             {...(uiInteractive ? dragAttrs : {})}
-            className="flex items-center gap-2 min-w-0"
+            className={[
+              'flex items-center justify-between gap-2 px-2 py-1.5 min-h-0 rounded-t-md border border-b-0',
+              mainChrome,
+              uiInteractive ? '' : 'invisible pointer-events-none',
+              !overlayMode ? 'border-b border-amber-500/20' : '',
+            ].join(' ')}
+            style={{ gridColumn: 1, gridRow: 1 }}
+            aria-hidden={!uiInteractive}
           >
-            <span
+            <div
               {...(uiInteractive ? dragAttrs : {})}
-              className="text-[10px] font-semibold text-amber-200/90"
-              style={hasBuild ? { textShadow } : undefined}
+              className="flex items-center gap-2 min-w-0"
             >
-              {hasBuild
-                ? `${doneCount}/${orderedGems.length}${
-                    hotkeyReady
-                      ? ` · ${hotkeyComplete} next · ${hotkeyInteract} edit · ${hotkeyOverlayToggle} hide`
-                      : ''
-                  }${interactive ? ' · interactive' : ''}${
-                    moveMode ? ' · move' : ''
-                  }`
-                : 'LevelingExile'}
-            </span>
-          </div>
+              <span
+                {...(uiInteractive ? dragAttrs : {})}
+                className="text-[10px] font-semibold text-amber-200/90"
+                style={hasBuild ? { textShadow } : undefined}
+              >
+                {hasBuild
+                  ? `${doneCount}/${orderedGems.length}${
+                      hotkeyReady
+                        ? ` · ${hotkeyComplete} next · ${hotkeyInteract} edit · ${hotkeyOverlayToggle} hide`
+                        : ''
+                    }${interactive ? ' · interactive' : ''}${
+                      moveMode ? ' · move' : ''
+                    }`
+                  : 'LevelingExile'}
+              </span>
+            </div>
 
-          <div className="flex items-center gap-1 shrink-0">
-            <button
-              type="button"
-              title={moveMode ? 'Move mode on — drag header' : 'Move window'}
-              aria-label="Move window"
-              aria-pressed={moveMode}
-              onClick={() => setMoveMode((v) => !v)}
-              className={[
-                'rounded p-1 border transition inline-flex items-center justify-center',
-                moveMode
-                  ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
-                  : 'border-amber-500/30 text-amber-100/80 bg-black/35 hover:bg-black/50',
-              ].join(' ')}
-              style={hasBuild ? { textShadow } : undefined}
-            >
-              <MoveIcon className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              title="Settings"
-              aria-label="Settings"
-              onClick={() => {
-                setSettingsOpen((v) => {
-                  const next = !v;
-                  if (next && !hasBuild) setInteractive(true);
-                  return next;
-                });
-              }}
-              className={[
-                'rounded p-1 border transition inline-flex items-center justify-center',
-                settingsOpen
-                  ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
-                  : 'border-amber-500/30 text-amber-100/80 bg-black/35 hover:bg-black/50',
-              ].join(' ')}
-              style={hasBuild ? { textShadow } : undefined}
-            >
-              <CogIcon className="h-3.5 w-3.5" />
-            </button>
+            <div className="flex items-center gap-1 shrink-0">
+              <button
+                type="button"
+                title={moveMode ? 'Move mode on — drag header' : 'Move window'}
+                aria-label="Move window"
+                aria-pressed={moveMode}
+                onClick={() => setMoveMode((v) => !v)}
+                className={[
+                  'rounded p-1 border transition inline-flex items-center justify-center',
+                  moveMode
+                    ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
+                    : 'border-amber-500/30 text-amber-100/80 bg-black/35 hover:bg-black/50',
+                ].join(' ')}
+                style={hasBuild ? { textShadow } : undefined}
+              >
+                <MoveIcon className="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                title="Settings"
+                aria-label="Settings"
+                onClick={() => {
+                  setSettingsOpen((v) => {
+                    const next = !v;
+                    if (next && !hasBuild) setInteractive(true);
+                    return next;
+                  });
+                }}
+                className={[
+                  'rounded p-1 border transition inline-flex items-center justify-center',
+                  settingsOpen
+                    ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
+                    : 'border-amber-500/30 text-amber-100/80 bg-black/35 hover:bg-black/50',
+                ].join(' ')}
+                style={hasBuild ? { textShadow } : undefined}
+              >
+                <CogIcon className="h-3.5 w-3.5" />
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {settingsOpen && (
-        <SettingsPanel
-          settings={settings}
-          onChange={handleSettingsChange}
-          onClose={() => setSettingsOpen(false)}
-          input={input}
-          onInputChange={setInput}
-          onImport={handleImport}
-          loading={loading}
-          error={error}
-          className={className}
-          hasBuild={hasBuild}
-          onHotkeyListeningChange={onHotkeyListeningChange}
-          onQuit={exitApp}
-        />
-      )}
-      {!settingsOpen && (
-        <>
-          {(hasBuild || uiInteractive) && skillSets.length > 0 && (
-            <div className="relative z-50 px-2 pb-1.5 shrink-0 flex items-stretch gap-1.5">
-              <div className="min-w-0 flex-1">
-                <SkillSetSelect
-                  skillSets={skillSets}
-                  value={selectedSkillSetId}
-                  onChange={handleSkillSetChange}
-                  overlay={overlayMode}
-                  textShadow={textShadow}
-                  enabled={uiInteractive}
-                />
-              </div>
-              {hasBuild && (
-                <button
-                  type="button"
-                  title={
-                    gemLinksOpen ? 'Hide gem links' : 'Show gem links'
-                  }
-                  aria-label={
-                    gemLinksOpen ? 'Hide gem links' : 'Show gem links'
-                  }
-                  aria-pressed={gemLinksOpen}
-                  disabled={!uiInteractive}
-                  onClick={() => setGemLinksOpen((v) => !v)}
+        <div
+          className={[
+            'flex flex-col overflow-hidden min-h-0 rounded-b-md border border-t-0',
+            mainChrome,
+            !(hasBuild || uiInteractive) ? 'rounded-md border-t' : '',
+          ].join(' ')}
+          style={{ gridColumn: 1, gridRow: 2 }}
+        >
+          {settingsOpen && (
+            <SettingsPanel
+              settings={settings}
+              onChange={handleSettingsChange}
+              onClose={() => setSettingsOpen(false)}
+              input={input}
+              onInputChange={setInput}
+              onImport={handleImport}
+              loading={loading}
+              error={error}
+              className={className}
+              hasBuild={hasBuild}
+              onHotkeyListeningChange={onHotkeyListeningChange}
+              onQuit={exitApp}
+            />
+          )}
+          {!settingsOpen && (
+            <>
+              {(hasBuild || uiInteractive) && skillSets.length > 0 && (
+                <div className="relative z-50 px-2 pb-1.5 shrink-0 flex items-stretch gap-1.5">
+                  <div className="min-w-0 flex-1">
+                    <SkillSetSelect
+                      skillSets={skillSets}
+                      value={selectedSkillSetId}
+                      onChange={handleSkillSetChange}
+                      overlay={overlayMode}
+                      textShadow={textShadow}
+                      enabled={uiInteractive}
+                    />
+                  </div>
+                  {hasBuild && (
+                    <button
+                      type="button"
+                      title={
+                        gemLinksOpen ? 'Hide gem links' : 'Show gem links'
+                      }
+                      aria-label={
+                        gemLinksOpen ? 'Hide gem links' : 'Show gem links'
+                      }
+                      aria-pressed={gemLinksOpen}
+                      disabled={!uiInteractive}
+                      onClick={() => setGemLinksOpen((v) => !v)}
+                      className={[
+                        'shrink-0 rounded-md px-2 text-[10px] font-semibold border transition',
+                        gemLinksOpen
+                          ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
+                          : overlayMode
+                            ? 'border-white/15 text-amber-100/85 bg-black/45 hover:bg-black/60'
+                            : 'border-amber-500/25 text-amber-100/85 bg-slate-950/70 hover:border-amber-400/50',
+                        uiInteractive ? '' : 'opacity-80',
+                      ].join(' ')}
+                      style={overlayMode ? { textShadow } : undefined}
+                    >
+                      Links
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {settings.showNextUp && nextUp && (
+                <section
                   className={[
-                    'shrink-0 rounded-md px-2 text-[10px] font-semibold border transition',
-                    gemLinksOpen
-                      ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
-                      : overlayMode
-                        ? 'border-white/15 text-amber-100/85 bg-black/45 hover:bg-black/60'
-                        : 'border-amber-500/25 text-amber-100/85 bg-slate-950/70 hover:border-amber-400/50',
-                    uiInteractive ? '' : 'opacity-80',
+                    'mx-2 mb-1.5 rounded-md px-2.5 py-2',
+                    overlayMode
+                      ? 'bg-black/50 border border-amber-400/35'
+                      : 'bg-amber-500/15 border border-amber-400/50',
+                  ].join(' ')}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <GemIcon
+                      name={nextUp.name}
+                      overlay={overlayMode}
+                      className="h-[68px] w-[68px] shrink-0"
+                    />
+                    <div className="min-w-0 flex-1 text-left">
+                      <p
+                        className="text-[8px] uppercase tracking-[0.16em] text-amber-300/90"
+                        style={overlayMode ? { textShadow } : undefined}
+                      >
+                        Next up
+                      </p>
+                      {Number.isFinite(Number(nextUp.act)) && (
+                        <p
+                          className="text-xs font-bold text-amber-300 leading-tight"
+                          style={overlayMode ? { textShadow } : undefined}
+                        >
+                          Act {nextUp.act}
+                        </p>
+                      )}
+                      <p
+                        className="mt-0.5 text-sm font-semibold text-amber-50 leading-snug"
+                        style={overlayMode ? { textShadow } : undefined}
+                      >
+                        {nextUp.name}
+                        {(nextUp.count ?? 1) > 1 && (
+                          <span className="ml-1.5 text-[11px] font-bold text-amber-300/95">
+                            {nextUp.count}x
+                          </span>
+                        )}
+                      </p>
+                      <div
+                        className="mt-1 space-y-0 text-[11px] text-amber-100/95 leading-snug"
+                        style={overlayMode ? { textShadow } : undefined}
+                      >
+                        <p>Level {nextUp.level}</p>
+                        {nextUp.vendorItem ? (
+                          <p>vendor item</p>
+                        ) : (
+                          <>
+                            {nextUp.quest && <p>{nextUp.quest}</p>}
+                            {nextUp.vendor && (
+                              <p className="text-amber-200/90">{nextUp.vendor}</p>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {settings.showNextUp && !nextUp && orderedGems.length > 0 && (
+                <section
+                  className={[
+                    'mx-2 mb-1.5 rounded-md px-3 py-2 text-center text-xs font-medium',
+                    overlayMode
+                      ? 'bg-black/45 border border-emerald-400/30 text-emerald-200'
+                      : 'bg-emerald-500/10 border border-emerald-400/30 text-emerald-200',
                   ].join(' ')}
                   style={overlayMode ? { textShadow } : undefined}
                 >
-                  Links
-                </button>
+                  All gems completed
+                </section>
               )}
-            </div>
-          )}
 
-          {settings.showNextUp && nextUp && (
-            <section
-              className={[
-                'mx-2 mb-1.5 rounded-md px-2.5 py-2',
-                overlayMode
-                  ? 'bg-black/50 border border-amber-400/35'
-                  : 'bg-amber-500/15 border border-amber-400/50',
-              ].join(' ')}
-            >
-              <div className="flex items-center gap-2.5">
-                <GemIcon
-                  name={nextUp.name}
-                  overlay={overlayMode}
-                  className="h-[68px] w-[68px] shrink-0"
-                />
-                <div className="min-w-0 flex-1 text-left">
-                  <p
-                    className="text-[8px] uppercase tracking-[0.16em] text-amber-300/90"
-                    style={overlayMode ? { textShadow } : undefined}
-                  >
-                    Next up
-                  </p>
-                  {Number.isFinite(Number(nextUp.act)) && (
-                    <p
-                      className="text-xs font-bold text-amber-300 leading-tight"
-                      style={overlayMode ? { textShadow } : undefined}
-                    >
-                      Act {nextUp.act}
-                    </p>
-                  )}
-                  <p
-                    className="mt-0.5 text-sm font-semibold text-amber-50 leading-snug"
-                    style={overlayMode ? { textShadow } : undefined}
-                  >
-                    {nextUp.name}
-                    {(nextUp.count ?? 1) > 1 && (
-                      <span className="ml-1.5 text-[11px] font-bold text-amber-300/95">
-                        {nextUp.count}x
-                      </span>
-                    )}
-                  </p>
-                  <div
-                    className="mt-1 space-y-0 text-[11px] text-amber-100/95 leading-snug"
-                    style={overlayMode ? { textShadow } : undefined}
-                  >
-                    <p>Level {nextUp.level}</p>
-                    {nextUp.vendorItem ? (
-                      <p>vendor item</p>
-                    ) : (
-                      <>
-                        {nextUp.quest && <p>{nextUp.quest}</p>}
-                        {nextUp.vendor && (
-                          <p className="text-amber-200/90">{nextUp.vendor}</p>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
+              <ul className="relative z-0 flex-1 overflow-y-auto px-2 pb-2 space-y-1">
+                {orderedGems.length === 0 && (
+                  <li className="px-2 py-6 text-center text-xs text-amber-100/40">
+                    Open settings (cog) to import a PoB build.
+                  </li>
+                )}
 
-          {settings.showNextUp && !nextUp && orderedGems.length > 0 && (
-            <section
-              className={[
-                'mx-2 mb-1.5 rounded-md px-3 py-2 text-center text-xs font-medium',
-                overlayMode
-                  ? 'bg-black/45 border border-emerald-400/30 text-emerald-200'
-                  : 'bg-emerald-500/10 border border-emerald-400/30 text-emerald-200',
-              ].join(' ')}
-              style={overlayMode ? { textShadow } : undefined}
-            >
-              All gems completed
-            </section>
-          )}
+                {orderedGems.length > 0 && visibleGems.length === 0 && (
+                  <li className="px-2 py-6 text-center text-xs text-amber-100/40">
+                    All gems in this set are completed.
+                  </li>
+                )}
 
-          <ul className="relative z-0 flex-1 overflow-y-auto px-2 pb-2 space-y-1">
-            {orderedGems.length === 0 && (
-              <li className="px-2 py-6 text-center text-xs text-amber-100/40">
-                Open settings (cog) to import a PoB build.
-              </li>
-            )}
-
-            {orderedGems.length > 0 && visibleGems.length === 0 && (
-              <li className="px-2 py-6 text-center text-xs text-amber-100/40">
-                All gems in this set are completed.
-              </li>
-            )}
-
-            {visibleGems.map((gem) => {
-              const isDone = !!completed[gem.name];
-              const isNext = nextUp?.name === gem.name;
-              const actLabel = gemActLabel(gem);
-              return (
-                <li key={gem.name}>
-                  <button
-                    type="button"
-                    onClick={() => toggleGem(gem.name)}
-                    className={[
-                      'w-full text-left rounded-md px-2 py-1.5 transition-all duration-200 border',
-                      overlayMode
-                        ? isDone
-                          ? 'opacity-35 bg-transparent border-transparent'
-                          : isNext
-                            ? 'bg-black/55 border-amber-400/40'
-                            : 'bg-black/40 border-white/10 hover:bg-black/55'
-                        : isDone
-                          ? 'opacity-40 scale-[0.97] border-amber-500/10 bg-slate-950/30'
-                          : isNext
-                            ? 'border-amber-400/45 bg-amber-500/10'
-                            : 'border-amber-500/15 bg-slate-950/40 hover:border-amber-500/35',
-                    ].join(' ')}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <GemIcon
-                          name={gem.name}
-                          overlay={overlayMode}
-                          className="h-6 w-6"
-                        />
-                        <p
-                          className={[
-                            'text-xs font-medium min-w-0',
-                            isDone ? 'line-through text-amber-100/70' : 'text-amber-50',
-                          ].join(' ')}
-                          style={overlayMode ? { textShadow } : undefined}
-                        >
-                          {gem.name}
-                          {(gem.count ?? 1) > 1 && (
-                            <span
+                {visibleGems.map((gem) => {
+                  const isDone = !!completed[gem.name];
+                  const isNext = nextUp?.name === gem.name;
+                  const actLabel = gemActLabel(gem);
+                  return (
+                    <li key={gem.name}>
+                      <button
+                        type="button"
+                        onClick={() => toggleGem(gem.name)}
+                        className={[
+                          'w-full text-left rounded-md px-2 py-1.5 transition-all duration-200 border',
+                          overlayMode
+                            ? isDone
+                              ? 'opacity-35 bg-transparent border-transparent'
+                              : isNext
+                                ? 'bg-black/55 border-amber-400/40'
+                                : 'bg-black/40 border-white/10 hover:bg-black/55'
+                            : isDone
+                              ? 'opacity-40 scale-[0.97] border-amber-500/10 bg-slate-950/30'
+                              : isNext
+                                ? 'border-amber-400/45 bg-amber-500/10'
+                                : 'border-amber-500/15 bg-slate-950/40 hover:border-amber-500/35',
+                        ].join(' ')}
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <GemIcon
+                              name={gem.name}
+                              overlay={overlayMode}
+                              className="h-6 w-6"
+                            />
+                            <p
                               className={[
-                                'ml-1.5 text-[10px] font-bold no-underline',
-                                isDone ? 'text-amber-200/60' : 'text-amber-300',
+                                'text-xs font-medium min-w-0',
+                                isDone
+                                  ? 'line-through text-amber-100/70'
+                                  : 'text-amber-50',
                               ].join(' ')}
+                              style={overlayMode ? { textShadow } : undefined}
                             >
-                              {gem.count}x
+                              {gem.name}
+                              {(gem.count ?? 1) > 1 && (
+                                <span
+                                  className={[
+                                    'ml-1.5 text-[10px] font-bold no-underline',
+                                    isDone
+                                      ? 'text-amber-200/60'
+                                      : 'text-amber-300',
+                                  ].join(' ')}
+                                >
+                                  {gem.count}x
+                                </span>
+                              )}
+                            </p>
+                          </div>
+                          {actLabel && (
+                            <span
+                              className="shrink-0 text-[10px] font-semibold text-amber-300"
+                              style={overlayMode ? { textShadow } : undefined}
+                            >
+                              {actLabel}
                             </span>
                           )}
-                        </p>
-                      </div>
-                      {actLabel && (
-                        <span
-                          className="shrink-0 text-[10px] font-semibold text-amber-300"
+                        </div>
+                        <p
+                          className="mt-0.5 text-[10px] text-amber-100/80 pl-8"
                           style={overlayMode ? { textShadow } : undefined}
                         >
-                          {actLabel}
-                        </span>
-                      )}
-                    </div>
-                    <p
-                      className="mt-0.5 text-[10px] text-amber-100/80 pl-8"
-                      style={overlayMode ? { textShadow } : undefined}
-                    >
-                      {gemSourceLine(gem)}
-                    </p>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      )}
-      </div>
+                          {gemSourceLine(gem)}
+                        </p>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
+        </div>
 
-      {showGemLinks && (
-        <GemLinksPanel
-          links={gemLinks}
-          onClose={() => setGemLinksOpen(false)}
-          overlay={overlayMode}
-          interactive={interactive}
-          textShadow={textShadow}
-          enabled={uiInteractive}
-        />
-      )}
+        {showGemLinks && (
+          <GemLinksPanel
+            links={gemLinks}
+            onClose={() => setGemLinksOpen(false)}
+            overlay={overlayMode}
+            interactive={interactive}
+            textShadow={textShadow}
+            enabled={uiInteractive}
+          />
+        )}
       </div>
     </div>
   );
