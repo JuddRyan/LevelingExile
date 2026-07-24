@@ -134,7 +134,10 @@ export default function GemLinksPanel({
                         {' - '}
                       </span>
                     )}
-                    <span className={gemNameClass(name)} style={useShadow}>
+                    <span
+                      className={`${gemNameClass(name)} whitespace-nowrap`}
+                      style={useShadow}
+                    >
                       {name}
                     </span>
                   </span>
