@@ -242,6 +242,14 @@ function lookupGemRecord(name) {
   return null;
 }
 
+/** Catalog primary_attr for a gem display name: 'str' | 'dex' | 'int' | null. */
+export function getGemPrimaryAttr(name) {
+  const record = lookupGemRecord(name);
+  const attr = record?.primary_attr;
+  if (attr === 'str' || attr === 'dex' || attr === 'int') return attr;
+  return null;
+}
+
 function isValidAct(act) {
   return Number.isFinite(act) && act >= 1 && act <= 10;
 }

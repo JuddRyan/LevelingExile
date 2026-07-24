@@ -14,13 +14,18 @@ import {
 } from './lib/settings';
 import SettingsPanel, { CogIcon, MoveIcon } from './components/SettingsPanel';
 import GemIcon from './components/GemIcon';
+import GemLinksPanel from './components/GemLinksPanel';
 import SkillSetSelect from './components/SkillSetSelect';
 
 const STORAGE_KEY = 'poe-gem-tracker-state';
+/** Extra CSS width (pre-zoom) added to the right when gem links are open. */
+const LINKS_PANEL_WIDTH = 200;
 
 function reenrichSkillSets(skillSets, className) {
   return (skillSets || []).map((set) => ({
     ...set,
+    // Preserve PoB socket groups — do not re-sort by campaign act order.
+    links: Array.isArray(set.links) ? set.links : [],
     gems: (set.gems || [])
       .map((g) => ({
         ...enrichGem(g.name, className),
@@ -137,14 +142,18 @@ async function exitApp() {
   }
 }
 
-async function applyWindowLayout(settings) {
+async function applyWindowLayout(settings, extraCssWidth = 0) {
   try {
     const { LogicalSize } = await import('@tauri-apps/api/dpi');
     const win = await getAppWindow();
     await win.setAlwaysOnTop(true);
 
     const { width, height } = effectiveWindowSize(settings);
-    await win.setSize(new LogicalSize(width, height));
+    const factor = snapScale(settings.scale) / 100;
+    const extra = Math.max(0, Number(extraCssWidth) || 0);
+    await win.setSize(
+      new LogicalSize(width + Math.round(extra * factor), height),
+    );
   } catch {
     // browser
   }
@@ -171,14 +180,26 @@ export default function App() {
   );
   const [moveMode, setMoveMode] = useState(false);
   const [settings, setSettings] = useState(() => loadSettings());
+  const [gemLinksOpen, setGemLinksOpen] = useState(false);
 
-  const gems = useMemo(() => {
-    const set = skillSets.find((s) => s.id === selectedSkillSetId);
-    return set?.gems || [];
-  }, [skillSets, selectedSkillSetId]);
+  const selectedSkillSet = useMemo(
+    () => skillSets.find((s) => s.id === selectedSkillSetId) || null,
+    [skillSets, selectedSkillSetId],
+  );
+
+  const gems = useMemo(
+    () => selectedSkillSet?.gems || [],
+    [selectedSkillSet],
+  );
+
+  const gemLinks = useMemo(
+    () => selectedSkillSet?.links || [],
+    [selectedSkillSet],
+  );
 
   const hasBuild = gems.length > 0 || skillSets.some((s) => s.gems?.length);
   const overlayMode = hasBuild && !settingsOpen;
+  const showGemLinks = gemLinksOpen && hasBuild && !settingsOpen;
   const clickThrough = hasBuild && !settingsOpen && !interactive;
   // No build / settings open: always usable; otherwise only after interact hotkey
   const uiInteractive = !hasBuild || settingsOpen || interactive;
@@ -221,15 +242,20 @@ export default function App() {
   }, [settings]);
 
   useEffect(() => {
-    applyWindowLayout(settings);
-  }, [settings.scale, settings.width, settings.height]);
+    applyWindowLayout(settings, showGemLinks ? LINKS_PANEL_WIDTH : 0);
+  }, [settings.scale, settings.width, settings.height, showGemLinks]);
 
   // Startup: always on top + apply size
   useEffect(() => {
     const initial = loadSettings();
-    applyWindowLayout(initial);
+    applyWindowLayout(initial, 0);
     ensureAlwaysOnTop();
   }, []);
+
+  // Drop links panel when there is no build to show
+  useEffect(() => {
+    if (!hasBuild) setGemLinksOpen(false);
+  }, [hasBuild]);
 
   // Move mode off each time edit mode is entered (and when locked)
   useEffect(() => {
@@ -522,23 +548,32 @@ export default function App() {
     : orderedGems;
   const textShadow = '0 1px 2px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.7)';
   const scaleFactor = snapScale(settings.scale) / 100;
+  const shellWidth =
+    settings.width + (showGemLinks ? LINKS_PANEL_WIDTH : 0);
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-transparent">
       <div
+        className="flex flex-row select-none text-amber-100 overflow-hidden"
+        style={{
+          width: shellWidth,
+          height: settings.height,
+          zoom: scaleFactor,
+          pointerEvents: clickThrough ? 'none' : 'auto',
+        }}
+      >
+      <div
         className={[
-          'flex flex-col select-none text-amber-100 overflow-hidden',
+          'flex flex-col overflow-hidden shrink-0',
           overlayMode
             ? interactive
               ? 'rounded-md border border-amber-400/55 bg-slate-950/35'
               : 'bg-transparent'
-            : 'bg-slate-900/85 backdrop-blur-md border border-amber-500/30 shadow-2xl',
+            : 'bg-slate-900/85 backdrop-blur-md border border-amber-500/30 shadow-2xl rounded-md',
         ].join(' ')}
         style={{
           width: settings.width,
           height: settings.height,
-          zoom: scaleFactor,
-          pointerEvents: clickThrough ? 'none' : 'auto',
         }}
       >
       {(hasBuild || uiInteractive) && (
@@ -633,15 +668,43 @@ export default function App() {
       {!settingsOpen && (
         <>
           {(hasBuild || uiInteractive) && skillSets.length > 0 && (
-            <div className="relative z-50 px-2 pb-1.5 shrink-0">
-              <SkillSetSelect
-                skillSets={skillSets}
-                value={selectedSkillSetId}
-                onChange={handleSkillSetChange}
-                overlay={overlayMode}
-                textShadow={textShadow}
-                enabled={uiInteractive}
-              />
+            <div className="relative z-50 px-2 pb-1.5 shrink-0 flex items-stretch gap-1.5">
+              <div className="min-w-0 flex-1">
+                <SkillSetSelect
+                  skillSets={skillSets}
+                  value={selectedSkillSetId}
+                  onChange={handleSkillSetChange}
+                  overlay={overlayMode}
+                  textShadow={textShadow}
+                  enabled={uiInteractive}
+                />
+              </div>
+              {hasBuild && (
+                <button
+                  type="button"
+                  title={
+                    gemLinksOpen ? 'Hide gem links' : 'Show gem links'
+                  }
+                  aria-label={
+                    gemLinksOpen ? 'Hide gem links' : 'Show gem links'
+                  }
+                  aria-pressed={gemLinksOpen}
+                  disabled={!uiInteractive}
+                  onClick={() => setGemLinksOpen((v) => !v)}
+                  className={[
+                    'shrink-0 rounded-md px-2 text-[10px] font-semibold border transition',
+                    gemLinksOpen
+                      ? 'border-amber-400/50 text-amber-100 bg-amber-500/20'
+                      : overlayMode
+                        ? 'border-white/15 text-amber-100/85 bg-black/45 hover:bg-black/60'
+                        : 'border-amber-500/25 text-amber-100/85 bg-slate-950/70 hover:border-amber-400/50',
+                    uiInteractive ? '' : 'opacity-80',
+                  ].join(' ')}
+                  style={overlayMode ? { textShadow } : undefined}
+                >
+                  Links
+                </button>
+              )}
             </div>
           )}
 
@@ -806,6 +869,18 @@ export default function App() {
             })}
           </ul>
         </>
+      )}
+      </div>
+
+      {showGemLinks && (
+        <GemLinksPanel
+          links={gemLinks}
+          onClose={() => setGemLinksOpen(false)}
+          overlay={overlayMode}
+          interactive={interactive}
+          textShadow={textShadow}
+          enabled={uiInteractive}
+        />
       )}
       </div>
     </div>

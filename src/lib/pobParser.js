@@ -137,6 +137,7 @@ function parseXml(xml) {
 function gemNameFromNode(node) {
   const skillId = node.getAttribute('skillId');
   const candidates = [
+    node.getAttribute('nameSpec'),
     node.getAttribute('name'),
     node.getAttribute('gemName'),
     skillIdToName(skillId),
@@ -160,6 +161,54 @@ function gemNameFromNode(node) {
   }
 
   return null;
+}
+
+/** PoB socket group: enabled if enabled="true" or active="true". */
+function isSkillGroupEnabled(node) {
+  return (
+    node.getAttribute('enabled') === 'true' ||
+    node.getAttribute('active') === 'true'
+  );
+}
+
+/** PoB gem: enabled when attribute is missing or "true". */
+function isGemEnabled(node) {
+  const enabled = node.getAttribute('enabled');
+  return enabled == null || enabled === '' || enabled === 'true';
+}
+
+/**
+ * Extract linked socket groups under a Skills / SkillSet root.
+ * Each link preserves PoB gem order (active + supports). Prefer enabled
+ * groups/gems to match PoB visibility; fall back to all non-empty groups
+ * when nothing enabled remains (so a fully-disabled set still shows links).
+ */
+export function extractLinksFromRoot(root) {
+  const skillNodes = [...root.querySelectorAll(':scope > Skill')];
+
+  function collect(enabledOnly) {
+    const links = [];
+    for (const skill of skillNodes) {
+      if (enabledOnly && !isSkillGroupEnabled(skill)) continue;
+
+      const gems = [];
+      for (const gem of skill.querySelectorAll(':scope > Gem')) {
+        if (enabledOnly && !isGemEnabled(gem)) continue;
+        const name = gemNameFromNode(gem);
+        if (!name) continue;
+        gems.push(name);
+      }
+
+      if (gems.length > 0) {
+        links.push({ gems });
+      }
+    }
+    return links;
+  }
+
+  const enabledLinks = collect(true);
+  if (enabledLinks.length > 0) return enabledLinks;
+  return collect(false);
 }
 
 /**
@@ -225,6 +274,8 @@ export function extractSkillSetsFromXml(xml) {
         id: 'default',
         title: 'Default',
         gems: enrichAndSort(entries, className),
+        // Build layout — not sorted by campaign act order.
+        links: extractLinksFromRoot(skillsRoot),
       },
     ];
   } else {
@@ -239,6 +290,8 @@ export function extractSkillSetsFromXml(xml) {
         id,
         title,
         gems: enrichAndSort(entries, className),
+        // Build layout — not sorted by campaign act order.
+        links: extractLinksFromRoot(node),
       };
     });
   }
