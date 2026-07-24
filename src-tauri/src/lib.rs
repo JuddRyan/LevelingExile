@@ -15,7 +15,7 @@ static PAUSE_TOPMOST_REFRESH: AtomicBool = AtomicBool::new(false);
 /// Last visibility we applied while syncing with Path of Exile focus.
 static OVERLAY_SHOWN: AtomicBool = AtomicBool::new(true);
 
-/// Tray toggle: keep overlay visible for setup/import when PoE is not running.
+/// Tray toggle: keep overlay always visible for setup/import (ignores PoE focus / Alt+O).
 static FORCE_SHOW_WHEN_POE_OFF: AtomicBool = AtomicBool::new(false);
 
 /// Manual hide via overlay-toggle hotkey — overrides sync until toggled back.
@@ -143,34 +143,42 @@ mod poe_detect {
 }
 
 /// Sync overlay visibility with PoE:
-/// - User-hidden (toggle hotkey) → stay hidden (overrides focus sync)
+/// - Tray force-show on → always show (setup/import; wins over Alt+O / focus sync)
 /// - PoE off + force-show off → hide
-/// - PoE off + force-show on → show (setup/import)
+/// - PoE on + user-hidden → stay hidden (Alt+O overrides focus sync)
 /// - PoE on → show when PoE or overlay focused; hide otherwise
 fn sync_overlay_with_game(app: &AppHandle) {
   let Some(window) = app.get_webview_window("main") else {
     return;
   };
 
-  if USER_HIDDEN_OVERLAY.load(Ordering::SeqCst) {
-    if OVERLAY_SHOWN.swap(false, Ordering::SeqCst) {
-      let _ = window.hide();
-    }
-    return;
-  }
-
   #[cfg(target_os = "windows")]
   {
-    let (poe_running, poe_focused) = poe_detect::poe_state();
-    let overlay_focused = window.is_focused().unwrap_or(false);
     let force_show = FORCE_SHOW_WHEN_POE_OFF.load(Ordering::SeqCst);
 
+    // Tray "Show when game is off" / force-show: keep overlay visible until turned off.
+    if force_show {
+      USER_HIDDEN_OVERLAY.store(false, Ordering::SeqCst);
+      OVERLAY_SHOWN.store(true, Ordering::SeqCst);
+      let _ = window.show();
+      force_main_topmost(app);
+      return;
+    }
+
+    let (poe_running, poe_focused) = poe_detect::poe_state();
+    let overlay_focused = window.is_focused().unwrap_or(false);
+    let user_hidden = USER_HIDDEN_OVERLAY.load(Ordering::SeqCst);
+
     if !poe_running {
-      if force_show {
-        if !OVERLAY_SHOWN.swap(true, Ordering::SeqCst) {
-          let _ = window.show();
-        }
-      } else if OVERLAY_SHOWN.swap(false, Ordering::SeqCst) {
+      if OVERLAY_SHOWN.swap(false, Ordering::SeqCst) {
+        let _ = window.hide();
+      }
+      return;
+    }
+
+    // While PoE is running, Alt+O user-hide overrides focus sync.
+    if user_hidden {
+      if OVERLAY_SHOWN.swap(false, Ordering::SeqCst) {
         let _ = window.hide();
       }
       return;
@@ -242,7 +250,7 @@ fn setup_tray(app: &AppHandle) -> tauri::Result<()> {
   let force_show = CheckMenuItem::with_id(
     app,
     "force_show",
-    "Show when game is off",
+    "Always show overlay",
     true,
     FORCE_SHOW_WHEN_POE_OFF.load(Ordering::SeqCst),
     None::<&str>,
@@ -259,6 +267,16 @@ fn setup_tray(app: &AppHandle) -> tauri::Result<()> {
       "force_show" => {
         let next = !FORCE_SHOW_WHEN_POE_OFF.load(Ordering::SeqCst);
         FORCE_SHOW_WHEN_POE_OFF.store(next, Ordering::SeqCst);
+        if next {
+          // Clear Alt+O hide and force a show immediately (don't wait on OVERLAY_SHOWN).
+          USER_HIDDEN_OVERLAY.store(false, Ordering::SeqCst);
+          OVERLAY_SHOWN.store(true, Ordering::SeqCst);
+          if let Some(window) = app.get_webview_window("main") {
+            let _ = window.show();
+            let _ = window.set_always_on_top(true);
+            force_hwnd_topmost(&window);
+          }
+        }
         let _ = force_show_item.set_checked(next);
         sync_overlay_with_game(app);
       }
